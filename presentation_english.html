@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Health Assistant - Voice-Driven AI Agent</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .slide {
+            background: white;
+            margin: 20px auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 900px;
+            min-height: 600px;
+            page-break-after: always;
+        }
+        .slide h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        .slide h2 {
+            color: #34495e;
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .slide h3 {
+            color: #2980b9;
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .slide p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .slide ul {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .slide li {
+            margin-bottom: 8px;
+        }
+        .highlight {
+            background: #f39c12;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .tech-table th, .tech-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .tech-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        .tech-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .architecture-diagram {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+        .completed {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .pending {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .emoji {
+            font-size: 1.2em;
+        }
+        .value-box {
+            background: #e8f5e8;
+            border-left: 5px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .challenge-box {
+            background: #fdf2e9;
+            border-left: 5px solid #e67e22;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Page 1: Customer Scenario and Value Proposition -->
+<div class="slide">
+    <h1>Intelligent Health Assistant - Voice-Driven AI Agent</h1>
+    <h2>Customer Scenario and Value Proposition</h2>
+    
+    <div class="value-box">
+        <h3>Jobs to be Done</h3>
+        <p><strong>"As an elderly person, I want to easily manage my health affairs through voice conversation, including medication reminders, doctor appointments, symptom recording, etc., so I can maintain my health and reduce dependence on family members."</strong></p>
+    </div>
+
+    <h3>Customer Pain Points</h3>
+    <ul>
+        <li><span class="emoji">🔍</span> <strong>High Technical Barriers</strong>: Elderly people struggle with complex health management applications</li>
+        <li><span class="emoji">⏰</span> <strong>Memory Difficulties</strong>: Easy to forget medication times and doctor appointments</li>
+        <li><span class="emoji">🏥</span> <strong>Healthcare Inconvenience</strong>: Lack of health data records and symptom tracking</li>
+        <li><span class="emoji">👨‍👩‍👧‍👦</span> <strong>Family Dependence</strong>: Need family assistance to manage health affairs</li>
+    </ul>
+
+    <h3>Core Value of Voice Interaction</h3>
+    <ul>
+        <li><span class="emoji">🎤</span> <strong>Natural Interaction</strong>: Through conversation rather than clicking, reducing learning costs</li>
+        <li><span class="emoji">🧠</span> <strong>Reduced Cognitive Load</strong>: No need to memorize complex operation procedures</li>
+        <li><span class="emoji">⚡</span> <strong>Instant Response</strong>: Real-time voice feedback and confirmation, improving user experience</li>
+        <li><span class="emoji">🌐</span> <strong>Accessibility</strong>: Suitable for users with visual or operational limitations</li>
+    </ul>
+
+</div>
+
+<!-- Page 2: Technical Architecture and System Components -->
+<div class="slide">
+    <h1>Technical Architecture and System Components</h1>
+    
+    <h2>System Architecture Overview</h2>
+    <div class="architecture-diagram">
+        <p><strong>User Interface Layer</strong> (Web Frontend)</p>
+        <p>↕ WebSocket/REST API</p>
+        <p><strong>API Service Layer</strong> (FastAPI)</p>
+        <p>↕ Asynchronous Calls</p>
+        <p><strong>AI Agent Core Layer</strong> (LangChain + LangGraph)</p>
+        <p>↕ Tool Calling</p>
+        <p><strong>Data Processing Layer</strong> (SQLite + External APIs)</p>
+    </div>
+
+    <h2>Core Components</h2>
+    <ul>
+        <li><strong>Voice Processing</strong>: SpeechRecognition + pyttsx3 for Chinese voice recognition</li>
+        <li><strong>AI Engine</strong>: OpenAI GPT-4 for intelligent conversation</li>
+        <li><strong>Workflow</strong>: LangGraph state machine for conversation management</li>
+        <li><strong>Data Storage</strong>: SQLite database for health data</li>
+        <li><strong>Tools</strong>: 7 professional health management tools</li>
+    </ul>
+
+    <h2>Technical Performance</h2>
+    <ul>
+        <li><span class="completed">Response Time</span>: Voice recognition <2s, AI processing <3s</li>
+        <li><span class="completed">Concurrency</span>: Multiple WebSocket connections</li>
+        <li><span class="completed">Stability</span>: Comprehensive error handling</li>
+    </ul>
+</div>
+
+<!-- Page 3: Technology Selection and Orchestration Framework -->
+<div class="slide">
+    <h1>Technology Selection and Orchestration Framework</h1>
+    
+    <h2>Technology Stack</h2>
+    <table class="tech-table">
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Technology</th>
+                <th>Rationale</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Foundation Model</strong></td>
+                <td>OpenAI GPT-4</td>
+                <td>Powerful Chinese conversation understanding</td>
+            </tr>
+            <tr>
+                <td><strong>Speech-to-Text</strong></td>
+                <td>SpeechRecognition + Google Speech API</td>
+                <td>High accuracy Chinese recognition</td>
+            </tr>
+            <tr>
+                <td><strong>Text-to-Speech</strong></td>
+                <td>pyttsx3</td>
+                <td>Cross-platform support, configurable voice</td>
+            </tr>
+            <tr>
+                <td><strong>AI Framework</strong></td>
+                <td>LangChain + LangGraph</td>
+                <td>Modular tool design, intelligent execution</td>
+            </tr>
+            <tr>
+                <td><strong>Web Framework</strong></td>
+                <td>FastAPI + WebSocket</td>
+                <td>Asynchronous processing, real-time communication</td>
+            </tr>
+            <tr>
+                <td><strong>Data Storage</strong></td>
+                <td>SQLite</td>
+                <td>Lightweight database for personal health data</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>LangChain + LangGraph Advantages</h2>
+    <ul>
+        <li><span class="emoji">🔧</span> <strong>Tool Modularity</strong>: 7 professional health management tools</li>
+        <li><span class="emoji">🤖</span> <strong>Intelligent Execution</strong>: Automatic tool selection and parameter extraction</li>
+        <li><span class="emoji">🔄</span> <strong>State Management</strong>: LangGraph workflow state machine</li>
+        <li><span class="emoji">💾</span> <strong>Memory Management</strong>: Conversation history and context preservation</li>
+        <li><span class="emoji">⚠️</span> <strong>Error Handling</strong>: Comprehensive exception handling</li>
+    </ul>
+
+    <h2>Tool Calling Workflow</h2>
+    <ol>
+        <li><strong>User Input</strong> → Voice/Text Recognition</li>
+        <li><strong>Intent Understanding</strong> → GPT-4 analyzes user intent</li>
+        <li><strong>Tool Selection</strong> → LangChain selects appropriate tool</li>
+        <li><strong>Parameter Extraction</strong> → Extract parameters from input</li>
+        <li><strong>Tool Execution</strong> → Execute operation</li>
+        <li><strong>Result Integration</strong> → Generate response</li>
+        <li><strong>Voice Output</strong> → Convert to voice playback</li>
+    </ol>
+
+</div>
+
+<!-- Page 4: Integration Points and API Interfaces -->
+<div class="slide">
+    <h1>Integration Points and API Interfaces</h1>
+    
+    <h2>Core Integration Points</h2>
+    
+    <h3>1. OpenAI API Integration</h3>
+    <ul>
+        <li><strong>Asynchronous Processing</strong>: Non-blocking API calls with asyncio</li>
+        <li><strong>Context Management</strong>: Conversation history and user context</li>
+        <li><strong>Error Handling</strong>: Exponential backoff retry strategy</li>
+    </ul>
+
+    <h3>2. LangChain Tool Integration (7 Tools)</h3>
+    <ul>
+        <li><strong>medication_reminder</strong>: Medication reminder setting</li>
+        <li><strong>health_record</strong>: Health information recording</li>
+        <li><strong>doctor_appointment</strong>: Doctor appointment scheduling</li>
+        <li><strong>emergency_alert</strong>: Emergency situation handling</li>
+        <li><strong>weather_health_advice</strong>: Weather-based health advice</li>
+        <li><strong>medication_query</strong>: Medication information query</li>
+        <li><strong>reminder_query</strong>: Reminder item query</li>
+    </ul>
+
+    <h3>3. External Service Integration</h3>
+    <ul>
+        <li><strong>Weather API</strong>: Real-time weather information</li>
+        <li><strong>Calendar API</strong>: Appointment and reminder management</li>
+        <li><strong>Emergency Notification</strong>: Automatic family notifications</li>
+    </ul>
+
+    <h3>4. Database Integration</h3>
+    <ul>
+        <li><strong>5 Core Tables</strong>: users, medications, health_records, reminders, appointments</li>
+        <li><strong>Transaction Processing</strong>: Data consistency and integrity</li>
+        <li><strong>Connection Pool</strong>: Optimized database performance</li>
+    </ul>
+
+    <h2>API Interface Coverage</h2>
+    <ul>
+        <li><span class="completed">25+ REST Endpoints</span>: Complete CRUD operations</li>
+        <li><span class="completed">WebSocket Interface</span>: Real-time voice interaction</li>
+        <li><span class="completed">Health Check</span>: System status monitoring</li>
+        <li><span class="completed">Test Interfaces</span>: Function verification and debugging</li>
+    </ul>
+</div>
+
+<!-- Page 5: Completion Status and Future Planning -->
+<div class="slide">
+    <h1>Completion Status and Future Planning</h1>
+    
+    <h2>Completed Features <span class="completed">✅</span></h2>
+    
+    <h3>Core Functionality</h3>
+    <ul>
+        <li><span class="completed">Complete AI Agent System</span>: LangChain and LangGraph intelligent conversation</li>
+        <li><span class="completed">Voice Interaction</span>: Complete speech-to-text and text-to-speech</li>
+        <li><span class="completed">Health Data Management</span>: Complete CRUD for users, medications, health records</li>
+        <li><span class="completed">External Service Integration</span>: Weather, calendar, emergency notification services</li>
+        <li><span class="completed">Web Service Architecture</span>: REST API and WebSocket real-time communication</li>
+        <li><span class="completed">Error Handling</span>: Comprehensive exception handling and graceful degradation</li>
+        <li><span class="completed">Test Coverage</span>: 8 test categories comprehensive test suite</li>
+    </ul>
+
+    <h3>Technical Metrics Achieved</h3>
+    <ul>
+        <li><span class="completed">Response Time</span>: Voice recognition <2s, AI processing <3s, database queries <100ms</li>
+        <li><span class="completed">Concurrency Support</span>: Multiple WebSocket connections simultaneously</li>
+        <li><span class="completed">System Stability</span>: Comprehensive error handling and recovery mechanisms</li>
+        <li><span class="completed">Code Quality</span>: Modular design, high cohesion and low coupling</li>
+    </ul>
+
+    <h2>Future Enhancement Directions</h2>
+    
+    <h3>Feature Extensions</h3>
+    <ul>
+        <li><span class="pending">[ ]</span> <strong>More Health Monitoring</strong>: Blood pressure, blood sugar, heart rate monitoring</li>
+        <li><span class="pending">[ ]</span> <strong>Intelligent Health Analysis</strong>: Health trend analysis based on historical data</li>
+        <li><span class="pending">[ ]</span> <strong>Multi-language Support</strong>: English, Japanese and other languages</li>
+        <li><span class="pending">[ ]</span> <strong>Mobile Applications</strong>: iOS and Android native app development</li>
+        <li><span class="pending">[ ]</span> <strong>Smart Hardware Integration</strong>: Blood pressure monitors, glucose meters, smart bands</li>
+    </ul>
+
+    <h3>Technical Optimizations</h3>
+    <ul>
+        <li><span class="pending">[ ]</span> <strong>Model Fine-tuning</strong>: GPT model fine-tuning for health domain</li>
+        <li><span class="pending">[ ]</span> <strong>Voice Recognition Optimization</strong>: Improving Chinese voice recognition accuracy</li>
+        <li><span class="pending">[ ]</span> <strong>Response Speed Optimization</strong>: Further reducing system response time</li>
+        <li><span class="pending">[ ]</span> <strong>Security Enhancement</strong>: Data encryption, user privacy protection</li>
+        <li><span class="pending">[ ]</span> <strong>Containerized Deployment</strong>: Docker and Kubernetes deployment support</li>
+    </ul>
+
+    <h2>Project Value Summary</h2>
+    <div class="value-box">
+        <ul>
+            <li><strong>Social Value</strong>: Reducing barriers for elderly users, improving quality of life</li>
+            <li><strong>Technical Value</strong>: Demonstrating AI applications in health field</li>
+            <li><strong>Business Value</strong>: Scalable intelligent health management platform</li>
+            <li><strong>Educational Value</strong>: Complete LangChain and LangGraph application case study</li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- Summary Page -->
+<div class="slide">
+    <h1>Project Summary</h1>
+    
+    <h2>Project Achievements</h2>
+    <div class="value-box">
+        <p>This Intelligent Health Assistant project successfully achieved:</p>
+        <ol>
+            <li><strong>Complete Voice-Driven AI Agent System</strong> - Based on LangChain and LangGraph</li>
+            <li><strong>Health Management Solution for Elderly People</strong> - Reducing usage barriers</li>
+            <li><strong>Modern Technical Architecture</strong> - Asynchronous processing, modular design</li>
+            <li><strong>Comprehensive Documentation and Testing</strong> - Complete API documentation and test coverage</li>
+            <li><strong>Practical Application Value</strong> - Solving real user pain points</li>
+        </ol>
+    </div>
+
+    <h2>Technical Highlights</h2>
+    <ul>
+        <li><span class="emoji">🎯</span> <strong>Intelligent Conversation Management</strong>: Multi-turn conversation understanding based on GPT-4</li>
+        <li><span class="emoji">🎤</span> <strong>Voice Interaction Optimization</strong>: Specifically optimized for Chinese voice recognition</li>
+        <li><span class="emoji">📊</span> <strong>Health Data Management</strong>: Structured health data model and intelligent reminders</li>
+        <li><span class="emoji">🔧</span> <strong>LangChain Integration</strong>: Intelligent execution of 7 professional health management tools</li>
+        <li><span class="emoji">🏗️</span> <strong>System Architecture Design</strong>: Asynchronous processing, modular design, easy to extend</li>
+    </ul>
+
+    <h2>Project Demo Gallery</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; margin: 20px 0;">
+        <div style="flex: 1; min-width: 300px; margin: 10px; text-align: center;">
+            <img src="img/img1.png" alt="User Interface" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+            <p style="font-style: italic; color: #666; margin-top: 10px; font-size: 0.9em;">Figure 1: Main user interface showing voice interaction capabilities</p>
+        </div>
+        <div style="flex: 1; min-width: 300px; margin: 10px; text-align: center;">
+            <img src="img/img2.png" alt="Login Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+            <p style="font-style: italic; color: #666; margin-top: 10px; font-size: 0.9em;">Figure 2: Login Page</p>
+        </div>
+        <div style="flex: 1; min-width: 300px; margin: 10px; text-align: center;">
+            <img src="img/img3.png" alt="Live Demo" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+            <p style="font-style: italic; color: #666; margin-top: 10px; font-size: 0.9em;">Figure 3: Register Page</p>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; font-size: 1.5em; color: #2c3e50;">
+        <strong>Let AI technology safeguard the health of elderly people!</strong> <span class="emoji">🏥✨</span>
+    </div>
+</div>
+
+</body>
+</html>
