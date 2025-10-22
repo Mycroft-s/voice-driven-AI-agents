@@ -1,0 +1,856 @@
+2025-10-21 17:16:21,427 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 17:16:21,427 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 17:16:21,518 - voice_processor - INFO - 语音处理器初始化完成
+2025-10-21 17:16:21,881 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 17:16:21,881 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 17:16:21,882 - langchain_tools - INFO - 创建了7个健康助手工具
+2025-10-21 17:16:22,265 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 17:16:22,265 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 17:16:22,265 - langchain_tools - INFO - 创建了7个健康助手工具
+2025-10-21 17:16:22,266 - langgraph_workflow - INFO - 健康助手工作流初始化完成
+2025-10-21 17:16:22,267 - config - INFO - LangChain健康助手初始化完成
+2025-10-21 17:16:22,284 - config - INFO - 智能健康助手API服务启动
+2025-10-21 17:16:22,287 - data_manager - INFO - 添加用户: 张大爷, ID: 11
+2025-10-21 17:16:22,288 - config - INFO - 用户档案设置完成: 张大爷, ID: 11
+2025-10-21 17:16:22,291 - data_manager - INFO - 添加药物: 降压药, 用户ID: 11
+2025-10-21 17:16:22,291 - config - INFO - 添加药物: 降压药
+2025-10-21 17:16:22,294 - data_manager - INFO - 添加药物: 降糖药, 用户ID: 11
+2025-10-21 17:16:22,294 - config - INFO - 添加药物: 降糖药
+2025-10-21 17:16:22,294 - config - INFO - 示例用户档案和药物信息已创建
+2025-10-21 17:16:27,694 - config - INFO - WebSocket连接已建立
+2025-10-21 17:16:37,077 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 17:16:37,899 - config - ERROR - 处理用户输入失败: MedicationReminderTool._run() missing 3 required positional arguments: 'medication_name', 'dosage', and 'time_slots'
+2025-10-21 17:23:56,651 - config - INFO - WebSocket连接已断开
+2025-10-21 17:23:56,651 - config - INFO - 对话已停止
+2025-10-21 17:23:56,762 - config - INFO - 智能健康助手API服务关闭
+2025-10-21 17:23:56,762 - config - INFO - 对话已停止
+2025-10-21 17:24:00,047 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 17:24:00,048 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 17:24:00,136 - voice_processor - INFO - 语音处理器初始化完成
+2025-10-21 17:24:00,490 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 17:24:00,491 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 17:24:00,491 - langchain_tools - INFO - 创建了7个健康助手工具
+2025-10-21 17:24:00,873 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 17:24:00,873 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 17:24:00,873 - langchain_tools - INFO - 创建了7个健康助手工具
+2025-10-21 17:24:00,875 - langgraph_workflow - INFO - 健康助手工作流初始化完成
+2025-10-21 17:24:00,875 - config - INFO - LangChain健康助手初始化完成
+2025-10-21 17:24:00,891 - config - INFO - 智能健康助手API服务启动
+2025-10-21 17:24:00,894 - data_manager - INFO - 添加用户: 张大爷, ID: 12
+2025-10-21 17:24:00,894 - config - INFO - 用户档案设置完成: 张大爷, ID: 12
+2025-10-21 17:24:00,897 - data_manager - INFO - 添加药物: 降压药, 用户ID: 12
+2025-10-21 17:24:00,897 - config - INFO - 添加药物: 降压药
+2025-10-21 17:24:00,900 - data_manager - INFO - 添加药物: 降糖药, 用户ID: 12
+2025-10-21 17:24:00,900 - config - INFO - 添加药物: 降糖药
+2025-10-21 17:24:00,900 - config - INFO - 示例用户档案和药物信息已创建
+2025-10-21 17:24:03,072 - config - INFO - WebSocket连接已建立
+2025-10-21 17:24:10,563 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 17:24:11,619 - data_manager - INFO - 添加药物: 降压药, 用户ID: 12
+2025-10-21 17:24:11,622 - data_manager - INFO - 添加提醒: 服药提醒 - 降压药, 用户ID: 12
+2025-10-21 17:24:12,563 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 18:55:22,947 - config - INFO - WebSocket连接已断开
+2025-10-21 18:55:22,948 - config - INFO - 对话已停止
+2025-10-21 19:08:19,746 - config - INFO - 智能健康助手API服务关闭
+2025-10-21 19:08:19,746 - config - INFO - 对话已停止
+2025-10-21 19:09:22,767 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 19:09:22,767 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 19:09:22,856 - voice_processor - INFO - 语音处理器初始化完成
+2025-10-21 19:09:23,216 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 19:09:23,216 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 19:09:23,217 - langchain_tools - INFO - 创建了7个健康助手工具
+2025-10-21 19:09:23,592 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 19:09:23,592 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 19:09:23,592 - langchain_tools - INFO - 创建了7个健康助手工具
+2025-10-21 19:09:23,594 - langgraph_workflow - INFO - 健康助手工作流初始化完成
+2025-10-21 19:09:23,594 - config - INFO - LangChain健康助手初始化完成
+2025-10-21 19:09:23,613 - config - INFO - 智能健康助手API服务启动
+2025-10-21 19:09:23,616 - data_manager - INFO - 添加用户: 张大爷, ID: 13
+2025-10-21 19:09:23,616 - config - INFO - 用户档案设置完成: 张大爷, ID: 13
+2025-10-21 19:09:23,618 - data_manager - INFO - 添加药物: 降压药, 用户ID: 13
+2025-10-21 19:09:23,618 - config - INFO - 添加药物: 降压药
+2025-10-21 19:09:23,621 - data_manager - INFO - 添加药物: 降糖药, 用户ID: 13
+2025-10-21 19:09:23,621 - config - INFO - 添加药物: 降糖药
+2025-10-21 19:09:23,621 - config - INFO - 示例用户档案和药物信息已创建
+2025-10-21 19:10:00,660 - config - INFO - WebSocket连接已建立
+2025-10-21 19:25:25,615 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:25:31,767 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:25:32,143 - langchain_tools - ERROR - 获取天气健康建议失败: 'coroutine' object is not subscriptable
+2025-10-21 19:25:32,786 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:28:06,191 - config - INFO - WebSocket连接已断开
+2025-10-21 19:28:06,191 - config - INFO - 对话已停止
+2025-10-21 19:28:06,299 - config - INFO - 智能健康助手API服务关闭
+2025-10-21 19:28:06,299 - config - INFO - 对话已停止
+2025-10-21 19:28:15,631 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 19:28:37,345 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 19:28:37,372 - external_apis - ERROR - 获取天气信息失败: 404 Client Error: Not Found for url: http://api.openweathermap.org/data/2.5/weather?q=%E5%8C%97%E4%BA%AC&appid=f9dae47bcd2434c379e831e8b3467423&units=metric&lang=zh_cn
+2025-10-21 19:28:37,402 - external_apis - ERROR - 获取天气信息失败: 404 Client Error: Not Found for url: http://api.openweathermap.org/data/2.5/weather?q=%E4%B8%8A%E6%B5%B7&appid=f9dae47bcd2434c379e831e8b3467423&units=metric&lang=zh_cn
+2025-10-21 19:28:37,432 - external_apis - ERROR - 获取天气信息失败: 404 Client Error: Not Found for url: http://api.openweathermap.org/data/2.5/weather?q=%E6%B7%B1%E5%9C%B3&appid=f9dae47bcd2434c379e831e8b3467423&units=metric&lang=zh_cn
+2025-10-21 19:28:37,448 - external_apis - INFO - 获取天气信息成功: Beijing
+2025-10-21 19:28:37,472 - external_apis - INFO - 获取天气信息成功: Shanghai
+2025-10-21 19:29:16,003 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 19:29:16,004 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 19:29:16,097 - voice_processor - INFO - 语音处理器初始化完成
+2025-10-21 19:29:16,449 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 19:29:16,449 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 19:29:16,452 - google_calendar_integration - WARNING - Google Calendar API 库未安装，使用模拟模式
+2025-10-21 19:29:16,452 - google_calendar_integration - INFO - 安装方法: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2025-10-21 19:29:16,453 - langchain_tools - INFO - Google Calendar 集成已启用
+2025-10-21 19:29:16,453 - langchain_tools - INFO - 创建了7个健康助手工具
+2025-10-21 19:29:16,831 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 19:29:16,831 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 19:29:16,832 - google_calendar_integration - WARNING - Google Calendar API 库未安装，使用模拟模式
+2025-10-21 19:29:16,832 - google_calendar_integration - INFO - 安装方法: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2025-10-21 19:29:16,832 - langchain_tools - INFO - Google Calendar 集成已启用
+2025-10-21 19:29:16,832 - langchain_tools - INFO - 创建了7个健康助手工具
+2025-10-21 19:29:16,832 - langgraph_workflow - INFO - 健康助手工作流初始化完成
+2025-10-21 19:29:16,834 - config - INFO - LangChain健康助手初始化完成
+2025-10-21 19:29:16,852 - config - INFO - 智能健康助手API服务启动
+2025-10-21 19:29:16,854 - data_manager - INFO - 添加用户: 张大爷, ID: 14
+2025-10-21 19:29:16,855 - config - INFO - 用户档案设置完成: 张大爷, ID: 14
+2025-10-21 19:29:16,857 - data_manager - INFO - 添加药物: 降压药, 用户ID: 14
+2025-10-21 19:29:16,857 - config - INFO - 添加药物: 降压药
+2025-10-21 19:29:16,860 - data_manager - INFO - 添加药物: 降糖药, 用户ID: 14
+2025-10-21 19:29:16,860 - config - INFO - 添加药物: 降糖药
+2025-10-21 19:29:16,860 - config - INFO - 示例用户档案和药物信息已创建
+2025-10-21 19:29:20,312 - config - INFO - WebSocket连接已建立
+2025-10-21 19:29:35,904 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:29:36,977 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:30:57,499 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:30:58,288 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:32:09,902 - config - INFO - WebSocket连接已断开
+2025-10-21 19:32:09,902 - config - INFO - 对话已停止
+2025-10-21 19:32:10,007 - config - INFO - 智能健康助手API服务关闭
+2025-10-21 19:32:10,007 - config - INFO - 对话已停止
+2025-10-21 19:41:53,042 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 19:41:53,042 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 19:41:53,131 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 19:41:53,488 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 19:41:53,488 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 19:41:53,488 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 19:41:53,862 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 19:41:53,862 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 19:41:53,862 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 19:41:53,865 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 19:41:53,865 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 19:41:53,882 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 19:41:53,884 - data_manager - INFO - 添加用户: Mr. Johnson, ID: 15
+2025-10-21 19:41:53,884 - config - INFO - User profile setup complete: Mr. Johnson, ID: 15
+2025-10-21 19:41:53,887 - data_manager - INFO - 添加药物: Blood Pressure Medication, 用户ID: 15
+2025-10-21 19:41:53,887 - config - INFO - Added medication: Blood Pressure Medication
+2025-10-21 19:41:53,890 - data_manager - INFO - 添加药物: Diabetes Medication, 用户ID: 15
+2025-10-21 19:41:53,890 - config - INFO - Added medication: Diabetes Medication
+2025-10-21 19:41:53,890 - config - INFO - Sample user profile and medication information created
+2025-10-21 19:42:00,814 - config - INFO - WebSocket connection established
+2025-10-21 19:42:44,423 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 19:42:46,020 - voice_processor - INFO - Please start speaking...
+2025-10-21 19:42:49,550 - voice_processor - INFO - Recognizing speech...
+2025-10-21 19:42:50,478 - voice_processor - INFO - Recognition result: how's the weather today in New York
+2025-10-21 19:42:50,480 - config - INFO - User voice input: how's the weather today in New York
+2025-10-21 19:42:52,180 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:42:52,460 - langchain_tools - ERROR - Failed to get weather health advice: 'coroutine' object is not subscriptable
+2025-10-21 19:42:53,848 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:42:56,626 - voice_processor - INFO - Speech output: I'm sorry, but I'm currently unable to provide health advice based on the weather in New York. However, it's always a good idea to stay hydrated, wear appropriate clothing for the weather, and protect your skin from the sun. If you have any specific health concerns, please let me know and I'll do my best to assist you.
+2025-10-21 19:43:42,463 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:44:28,951 - config - INFO - WebSocket connection closed
+2025-10-21 19:44:28,952 - config - INFO - Conversation stopped
+2025-10-21 19:44:29,059 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 19:44:29,059 - config - INFO - Conversation stopped
+2025-10-21 19:44:32,967 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 19:44:32,967 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 19:44:33,057 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 19:44:33,417 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 19:44:33,417 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 19:44:33,417 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 19:44:33,797 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 19:44:33,797 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 19:44:33,797 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 19:44:33,798 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 19:44:33,798 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 19:44:33,816 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 19:44:33,818 - data_manager - INFO - 添加用户: Mr. Johnson, ID: 16
+2025-10-21 19:44:33,818 - config - INFO - User profile setup complete: Mr. Johnson, ID: 16
+2025-10-21 19:44:33,821 - data_manager - INFO - 添加药物: Blood Pressure Medication, 用户ID: 16
+2025-10-21 19:44:33,821 - config - INFO - Added medication: Blood Pressure Medication
+2025-10-21 19:44:33,824 - data_manager - INFO - 添加药物: Diabetes Medication, 用户ID: 16
+2025-10-21 19:44:33,824 - config - INFO - Added medication: Diabetes Medication
+2025-10-21 19:44:33,824 - config - INFO - Sample user profile and medication information created
+2025-10-21 19:44:35,385 - config - INFO - WebSocket connection established
+2025-10-21 19:44:41,815 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:44:55,220 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:51:44,926 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:51:45,636 - data_manager - INFO - 添加药物: 高血压药, 用户ID: 16
+2025-10-21 19:51:45,639 - data_manager - INFO - 添加提醒: Medication Reminder - 高血压药, 用户ID: 16
+2025-10-21 19:51:46,387 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:51:56,155 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 19:51:57,067 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:07:58,719 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:07:59,112 - langchain_tools - ERROR - Failed to get weather health advice: 'coroutine' object is not subscriptable
+2025-10-21 20:08:00,799 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:10:22,130 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:10:22,130 - external_apis - INFO - 城市名称转换: 北京 -> Beijing
+2025-10-21 20:10:22,154 - external_apis - INFO - 获取天气信息成功: 北京 (Beijing)
+2025-10-21 20:10:22,155 - external_apis - INFO - 城市名称转换: 上海 -> Shanghai
+2025-10-21 20:10:22,170 - external_apis - INFO - 获取天气信息成功: 上海 (Shanghai)
+2025-10-21 20:10:22,170 - external_apis - INFO - 城市名称转换: 深圳 -> Shenzhen
+2025-10-21 20:10:22,188 - external_apis - INFO - 获取天气信息成功: 深圳 (Shenzhen)
+2025-10-21 20:10:22,202 - external_apis - INFO - 获取天气信息成功: New York (New York)
+2025-10-21 20:10:22,215 - external_apis - INFO - 获取天气信息成功: London (London)
+2025-10-21 20:11:36,234 - config - INFO - WebSocket connection closed
+2025-10-21 20:11:36,234 - config - INFO - Conversation stopped
+2025-10-21 20:11:36,341 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 20:11:36,341 - config - INFO - Conversation stopped
+2025-10-21 20:11:40,151 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 20:11:40,151 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 20:11:40,238 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 20:11:40,601 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:11:40,601 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:11:40,601 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:11:41,050 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:11:41,050 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:11:41,050 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:11:41,051 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 20:11:41,051 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 20:11:41,070 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 20:11:41,073 - data_manager - INFO - 添加用户: Mr. Johnson, ID: 17
+2025-10-21 20:11:41,073 - config - INFO - User profile setup complete: Mr. Johnson, ID: 17
+2025-10-21 20:11:41,076 - data_manager - INFO - 添加药物: Blood Pressure Medication, 用户ID: 17
+2025-10-21 20:11:41,076 - config - INFO - Added medication: Blood Pressure Medication
+2025-10-21 20:11:41,080 - data_manager - INFO - 添加药物: Diabetes Medication, 用户ID: 17
+2025-10-21 20:11:41,080 - config - INFO - Added medication: Diabetes Medication
+2025-10-21 20:11:41,080 - config - INFO - Sample user profile and medication information created
+2025-10-21 20:11:41,538 - config - INFO - WebSocket connection established
+2025-10-21 20:11:56,295 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:11:57,217 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:12:08,202 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:12:09,040 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:12:21,893 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:12:23,133 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:13:53,733 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:13:53,878 - external_apis - ERROR - 获取天气信息失败: 404 Client Error: Not Found for url: http://api.openweathermap.org/data/2.5/weather?q=South+Africa&appid=f9dae47bcd2434c379e831e8b3467423&units=metric&lang=zh_cn
+2025-10-21 20:15:21,789 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:15:21,789 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:15:21,810 - external_apis - INFO - 获取天气信息成功: London (London)
+2025-10-21 20:15:21,822 - external_apis - INFO - 获取天气信息成功: Beijing (Beijing)
+2025-10-21 20:17:14,047 - config - INFO - WebSocket connection closed
+2025-10-21 20:17:14,047 - config - INFO - Conversation stopped
+2025-10-21 20:17:14,148 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 20:17:14,148 - config - INFO - Conversation stopped
+2025-10-21 20:17:22,042 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 20:17:22,042 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 20:17:22,131 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 20:17:22,493 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:17:22,493 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:17:22,493 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:17:22,883 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:17:22,883 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:17:22,883 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:17:22,885 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 20:17:22,885 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 20:17:22,901 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 20:17:22,905 - data_manager - INFO - 添加用户: Mr. Johnson, ID: 18
+2025-10-21 20:17:22,905 - config - INFO - User profile setup complete: Mr. Johnson, ID: 18
+2025-10-21 20:17:22,910 - data_manager - INFO - 添加药物: Blood Pressure Medication, 用户ID: 18
+2025-10-21 20:17:22,910 - config - INFO - Added medication: Blood Pressure Medication
+2025-10-21 20:17:22,912 - data_manager - INFO - 添加药物: Diabetes Medication, 用户ID: 18
+2025-10-21 20:17:22,912 - config - INFO - Added medication: Diabetes Medication
+2025-10-21 20:17:22,912 - config - INFO - Sample user profile and medication information created
+2025-10-21 20:17:27,274 - config - INFO - WebSocket connection established
+2025-10-21 20:17:41,109 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:17:41,452 - external_apis - INFO - 获取天气信息成功: new york (new york)
+2025-10-21 20:17:42,007 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:17:47,026 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:17:48,542 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:17:50,381 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:17:51,119 - voice_processor - INFO - Recognition result: how wiser in beij
+2025-10-21 20:17:51,120 - config - INFO - User voice input: how wiser in beij
+2025-10-21 20:17:51,922 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:17:52,232 - external_apis - INFO - 获取天气信息成功: Beijing (Beijing)
+2025-10-21 20:17:52,978 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:17:56,270 - voice_processor - INFO - Speech output: The current weather in Beijing is 4°C with clear skies and few clouds. Here are some health tips for you: 
+1. The weather is cold, so please keep warm to prevent catching a cold, especially for the elderly. 
+2. The air is dry, so remember to stay hydrated. 
+3. The sun is shining brightly, making it a good time to soak up some Vitamin D. Please remember to take care of your health.
+2025-10-21 20:21:32,010 - config - INFO - WebSocket connection closed
+2025-10-21 20:21:32,010 - config - INFO - Conversation stopped
+2025-10-21 20:21:32,119 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 20:21:32,119 - config - INFO - Conversation stopped
+2025-10-21 20:21:36,915 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 20:21:36,915 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 20:21:37,003 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 20:21:37,372 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:21:37,372 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:21:37,372 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:21:37,759 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:21:37,759 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:21:37,759 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:21:37,761 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 20:21:37,761 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 20:21:37,778 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 20:21:37,781 - data_manager - INFO - 添加用户: Mr. Johnson, ID: 19
+2025-10-21 20:21:37,781 - config - INFO - User profile setup complete: Mr. Johnson, ID: 19
+2025-10-21 20:21:37,785 - data_manager - INFO - 添加药物: Blood Pressure Medication, 用户ID: 19
+2025-10-21 20:21:37,785 - config - INFO - Added medication: Blood Pressure Medication
+2025-10-21 20:21:37,787 - data_manager - INFO - 添加药物: Diabetes Medication, 用户ID: 19
+2025-10-21 20:21:37,787 - config - INFO - Added medication: Diabetes Medication
+2025-10-21 20:21:37,788 - config - INFO - Sample user profile and medication information created
+2025-10-21 20:21:39,457 - config - INFO - WebSocket connection established
+2025-10-21 20:21:42,428 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:21:44,053 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:21:47,054 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:21:47,691 - voice_processor - INFO - Recognition result: hi how about the weather
+2025-10-21 20:21:47,693 - config - INFO - User voice input: hi how about the weather
+2025-10-21 20:21:48,724 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:21:51,646 - external_apis - INFO - 获取天气信息成功: Beijing (Beijing)
+2025-10-21 20:21:52,026 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:21:58,939 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:22:00,435 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:22:03,647 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:22:05,493 - voice_processor - INFO - Recognition result: play how about the weather in New York today
+2025-10-21 20:22:05,494 - config - INFO - User voice input: play how about the weather in New York today
+2025-10-21 20:22:06,139 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:22:06,584 - external_apis - INFO - 获取天气信息成功: New York (New York)
+2025-10-21 20:22:07,156 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:26:18,483 - config - INFO - WebSocket connection closed
+2025-10-21 20:26:18,483 - config - INFO - Conversation stopped
+2025-10-21 20:26:18,590 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 20:26:18,590 - config - INFO - Conversation stopped
+2025-10-21 20:26:22,209 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 20:26:22,209 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 20:26:22,296 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 20:26:22,660 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:26:22,660 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:26:22,661 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:26:23,046 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:26:23,046 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:26:23,046 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:26:23,048 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 20:26:23,048 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 20:26:23,075 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 20:26:23,078 - data_manager - INFO - 添加用户: Mr. Johnson, ID: 20
+2025-10-21 20:26:23,078 - config - INFO - User profile setup complete: Mr. Johnson, ID: 20
+2025-10-21 20:26:23,081 - data_manager - INFO - 添加药物: Blood Pressure Medication, 用户ID: 20
+2025-10-21 20:26:23,081 - config - INFO - Added medication: Blood Pressure Medication
+2025-10-21 20:26:23,083 - data_manager - INFO - 添加药物: Diabetes Medication, 用户ID: 20
+2025-10-21 20:26:23,083 - config - INFO - Added medication: Diabetes Medication
+2025-10-21 20:26:23,083 - config - INFO - Sample user profile and medication information created
+2025-10-21 20:26:26,126 - config - INFO - WebSocket connection established
+2025-10-21 20:26:30,140 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:26:31,687 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:26:33,126 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:26:33,601 - voice_processor - INFO - Recognition result: how is the weather
+2025-10-21 20:26:33,602 - config - INFO - User voice input: how is the weather
+2025-10-21 20:26:34,228 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:26:36,196 - external_apis - INFO - 获取天气信息成功: New York (New York)
+2025-10-21 20:26:36,543 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:26:54,893 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:26:56,308 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:26:58,168 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:26:58,927 - voice_processor - INFO - Recognition result: intentions
+2025-10-21 20:26:58,929 - config - INFO - User voice input: intentions
+2025-10-21 20:26:59,404 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:27:06,389 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:27:07,525 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:27:10,015 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:27:10,629 - voice_processor - INFO - Recognition result: how is the weather in Beijing
+2025-10-21 20:27:10,632 - config - INFO - User voice input: how is the weather in Beijing
+2025-10-21 20:27:11,454 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:27:11,767 - external_apis - INFO - 获取天气信息成功: Beijing (Beijing)
+2025-10-21 20:27:12,242 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:28:48,090 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 20:28:48,090 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 20:28:48,179 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 20:28:48,546 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:28:48,546 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:28:48,546 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:28:48,930 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:28:48,930 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:28:48,931 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:28:48,932 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 20:28:48,932 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 20:28:49,379 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:29:31,118 - config - INFO - WebSocket connection closed
+2025-10-21 20:29:31,118 - config - INFO - Conversation stopped
+2025-10-21 20:29:31,227 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 20:29:31,227 - config - INFO - Conversation stopped
+2025-10-21 20:29:40,584 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 20:29:40,584 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 20:29:40,672 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 20:29:41,029 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:29:41,030 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:29:41,030 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:29:41,403 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:29:41,403 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:29:41,404 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:29:41,405 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 20:29:41,405 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 20:29:41,422 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 20:29:41,424 - data_manager - INFO - 添加用户: Mr. Johnson, ID: 21
+2025-10-21 20:29:41,424 - config - INFO - User profile setup complete: Mr. Johnson, ID: 21
+2025-10-21 20:29:41,426 - data_manager - INFO - 添加药物: Blood Pressure Medication, 用户ID: 21
+2025-10-21 20:29:41,426 - config - INFO - Added medication: Blood Pressure Medication
+2025-10-21 20:29:41,429 - data_manager - INFO - 添加药物: Diabetes Medication, 用户ID: 21
+2025-10-21 20:29:41,429 - config - INFO - Added medication: Diabetes Medication
+2025-10-21 20:29:41,429 - config - INFO - Sample user profile and medication information created
+2025-10-21 20:29:44,536 - config - INFO - WebSocket connection established
+2025-10-21 20:29:47,865 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:29:49,381 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:29:51,712 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:29:52,266 - voice_processor - INFO - Recognition result: hello could you help
+2025-10-21 20:29:52,268 - config - INFO - User voice input: hello could you help
+2025-10-21 20:29:52,918 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:29:54,368 - config - INFO - Added user_input to result: hello could you help
+2025-10-21 20:29:54,368 - config - INFO - Complete result before return: {'success': True, 'response': "Hello! Of course, I'm here to help. Could you please tell me more about what you need assistance with? Are you looking to set a medication reminder, schedule a doctor's appointment, or do you need help with something else?", 'timestamp': '2025-10-21T20:29:54.368301', 'user_input': 'hello could you help'}
+2025-10-21 20:29:54,368 - config - INFO - Voice input result: {'success': True, 'response': "Hello! Of course, I'm here to help. Could you please tell me more about what you need assistance with? Are you looking to set a medication reminder, schedule a doctor's appointment, or do you need help with something else?", 'timestamp': '2025-10-21T20:29:54.368301', 'user_input': 'hello could you help'}
+2025-10-21 20:29:54,368 - config - INFO - User input in result: hello could you help
+2025-10-21 20:29:54,368 - config - INFO - Added user_input to response: hello could you help
+2025-10-21 20:29:54,369 - config - INFO - Sending response_data: {'type': 'response', 'success': True, 'response': "Hello! Of course, I'm here to help. Could you please tell me more about what you need assistance with? Are you looking to set a medication reminder, schedule a doctor's appointment, or do you need help with something else?", 'framework': 'LangChain', 'timestamp': '2025-10-21T20:29:54.368301', 'user_input': 'hello could you help'}
+2025-10-21 20:29:59,212 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:30:00,348 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:30:02,749 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:30:03,350 - voice_processor - INFO - Recognition result: hello could you tell me the weather
+2025-10-21 20:30:03,352 - config - INFO - User voice input: hello could you tell me the weather
+2025-10-21 20:30:03,783 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:30:05,160 - config - INFO - Added user_input to result: hello could you tell me the weather
+2025-10-21 20:30:05,161 - config - INFO - Complete result before return: {'success': True, 'response': "I'm sorry for any confusion, but as a health assistant AI, I don't have the capability to provide real-time weather updates. However, I can provide health advice based on weather conditions if you tell me the current weather in your city. Would you like to proceed with that?", 'timestamp': '2025-10-21T20:30:05.160851', 'user_input': 'hello could you tell me the weather'}
+2025-10-21 20:30:05,161 - config - INFO - Voice input result: {'success': True, 'response': "I'm sorry for any confusion, but as a health assistant AI, I don't have the capability to provide real-time weather updates. However, I can provide health advice based on weather conditions if you tell me the current weather in your city. Would you like to proceed with that?", 'timestamp': '2025-10-21T20:30:05.160851', 'user_input': 'hello could you tell me the weather'}
+2025-10-21 20:30:05,161 - config - INFO - User input in result: hello could you tell me the weather
+2025-10-21 20:30:05,161 - config - INFO - Added user_input to response: hello could you tell me the weather
+2025-10-21 20:30:05,161 - config - INFO - Sending response_data: {'type': 'response', 'success': True, 'response': "I'm sorry for any confusion, but as a health assistant AI, I don't have the capability to provide real-time weather updates. However, I can provide health advice based on weather conditions if you tell me the current weather in your city. Would you like to proceed with that?", 'framework': 'LangChain', 'timestamp': '2025-10-21T20:30:05.161869', 'user_input': 'hello could you tell me the weather'}
+2025-10-21 20:30:16,161 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:30:17,727 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:30:26,577 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:30:27,077 - voice_processor - INFO - Recognition result: how is the weather in
+2025-10-21 20:30:27,079 - config - INFO - User voice input: how is the weather in
+2025-10-21 20:30:27,641 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:30:28,844 - config - INFO - Added user_input to result: how is the weather in
+2025-10-21 20:30:28,845 - config - INFO - Complete result before return: {'success': True, 'response': "I'm sorry, but it seems like you didn't mention the name of the city. Could you please tell me the name of the city you want to know the weather-related health advice for?", 'timestamp': '2025-10-21T20:30:28.844734', 'user_input': 'how is the weather in'}
+2025-10-21 20:30:28,845 - config - INFO - Voice input result: {'success': True, 'response': "I'm sorry, but it seems like you didn't mention the name of the city. Could you please tell me the name of the city you want to know the weather-related health advice for?", 'timestamp': '2025-10-21T20:30:28.844734', 'user_input': 'how is the weather in'}
+2025-10-21 20:30:28,845 - config - INFO - User input in result: how is the weather in
+2025-10-21 20:30:28,845 - config - INFO - Added user_input to response: how is the weather in
+2025-10-21 20:30:28,845 - config - INFO - Sending response_data: {'type': 'response', 'success': True, 'response': "I'm sorry, but it seems like you didn't mention the name of the city. Could you please tell me the name of the city you want to know the weather-related health advice for?", 'framework': 'LangChain', 'timestamp': '2025-10-21T20:30:28.845735', 'user_input': 'how is the weather in'}
+2025-10-21 20:30:35,039 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:30:36,175 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:30:39,056 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:30:39,700 - voice_processor - INFO - Recognition result: how was the weather in New York
+2025-10-21 20:30:39,701 - config - INFO - User voice input: how was the weather in New York
+2025-10-21 20:30:40,564 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:30:41,014 - external_apis - INFO - 获取天气信息成功: New York (New York)
+2025-10-21 20:30:41,662 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:30:43,703 - config - INFO - Added user_input to result: how was the weather in New York
+2025-10-21 20:30:43,703 - config - INFO - Complete result before return: {'success': True, 'response': "The current weather in New York is 17°C with cloudy skies. The temperature is comfortable and it's a good day for outdoor activities. Please remember to stay hydrated and wear sun protection if needed. Is there anything else you would like to know?", 'timestamp': '2025-10-21T20:30:43.703701', 'user_input': 'how was the weather in New York'}
+2025-10-21 20:30:43,703 - config - INFO - Voice input result: {'success': True, 'response': "The current weather in New York is 17°C with cloudy skies. The temperature is comfortable and it's a good day for outdoor activities. Please remember to stay hydrated and wear sun protection if needed. Is there anything else you would like to know?", 'timestamp': '2025-10-21T20:30:43.703701', 'user_input': 'how was the weather in New York'}
+2025-10-21 20:30:43,703 - config - INFO - User input in result: how was the weather in New York
+2025-10-21 20:30:43,703 - config - INFO - Added user_input to response: how was the weather in New York
+2025-10-21 20:30:43,703 - config - INFO - Sending response_data: {'type': 'response', 'success': True, 'response': "The current weather in New York is 17°C with cloudy skies. The temperature is comfortable and it's a good day for outdoor activities. Please remember to stay hydrated and wear sun protection if needed. Is there anything else you would like to know?", 'framework': 'LangChain', 'timestamp': '2025-10-21T20:30:43.703701', 'user_input': 'how was the weather in New York'}
+2025-10-21 20:32:17,177 - config - INFO - WebSocket connection closed
+2025-10-21 20:32:17,178 - config - INFO - Conversation stopped
+2025-10-21 20:32:22,384 - config - INFO - WebSocket connection established
+2025-10-21 20:32:24,655 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:32:26,242 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:32:27,641 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:32:28,152 - voice_processor - INFO - Recognition result: how's the weather in
+2025-10-21 20:32:28,153 - config - INFO - User voice input: how's the weather in
+2025-10-21 20:32:29,187 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:32:30,431 - config - INFO - Added user_input to result: how's the weather in
+2025-10-21 20:32:30,431 - config - INFO - Complete result before return: {'success': True, 'response': "I'm sorry, but it seems like you didn't mention the name of the city. Could you please tell me the name of the city you want to know the weather-related health advice for?", 'timestamp': '2025-10-21T20:32:30.431238', 'user_input': "how's the weather in"}
+2025-10-21 20:32:30,431 - config - INFO - Voice input result: {'success': True, 'response': "I'm sorry, but it seems like you didn't mention the name of the city. Could you please tell me the name of the city you want to know the weather-related health advice for?", 'timestamp': '2025-10-21T20:32:30.431238', 'user_input': "how's the weather in"}
+2025-10-21 20:32:30,431 - config - INFO - User input in result: how's the weather in
+2025-10-21 20:32:30,431 - config - INFO - Added user_input to response: how's the weather in
+2025-10-21 20:32:30,432 - config - INFO - Sending response_data: {'type': 'response', 'success': True, 'response': "I'm sorry, but it seems like you didn't mention the name of the city. Could you please tell me the name of the city you want to know the weather-related health advice for?", 'framework': 'LangChain', 'timestamp': '2025-10-21T20:32:30.431238', 'user_input': "how's the weather in"}
+2025-10-21 20:32:33,105 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:32:34,292 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:32:35,942 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:32:36,419 - voice_processor - INFO - Recognition result: what was the weather in
+2025-10-21 20:32:36,420 - config - INFO - User voice input: what was the weather in
+2025-10-21 20:32:37,040 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:32:37,884 - config - INFO - Added user_input to result: what was the weather in
+2025-10-21 20:32:37,884 - config - INFO - Complete result before return: {'success': True, 'response': "I'm sorry, but it seems like you didn't mention the name of the city. Could you please tell me the name of the city you want to know the weather-related health advice for?", 'timestamp': '2025-10-21T20:32:37.884709', 'user_input': 'what was the weather in'}
+2025-10-21 20:32:37,884 - config - INFO - Voice input result: {'success': True, 'response': "I'm sorry, but it seems like you didn't mention the name of the city. Could you please tell me the name of the city you want to know the weather-related health advice for?", 'timestamp': '2025-10-21T20:32:37.884709', 'user_input': 'what was the weather in'}
+2025-10-21 20:32:37,884 - config - INFO - User input in result: what was the weather in
+2025-10-21 20:32:37,884 - config - INFO - Added user_input to response: what was the weather in
+2025-10-21 20:32:37,884 - config - INFO - Sending response_data: {'type': 'response', 'success': True, 'response': "I'm sorry, but it seems like you didn't mention the name of the city. Could you please tell me the name of the city you want to know the weather-related health advice for?", 'framework': 'LangChain', 'timestamp': '2025-10-21T20:32:37.884709', 'user_input': 'what was the weather in'}
+2025-10-21 20:32:39,926 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 20:32:41,113 - voice_processor - INFO - Please start speaking...
+2025-10-21 20:32:43,042 - voice_processor - INFO - Recognizing speech...
+2025-10-21 20:32:43,646 - voice_processor - INFO - Recognition result: what about the weather in New York
+2025-10-21 20:32:43,647 - config - INFO - User voice input: what about the weather in New York
+2025-10-21 20:32:44,914 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:32:45,219 - external_apis - INFO - 获取天气信息成功: New York (New York)
+2025-10-21 20:32:45,743 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:32:46,946 - config - INFO - Added user_input to result: what about the weather in New York
+2025-10-21 20:32:46,946 - config - INFO - Complete result before return: {'success': True, 'response': "The current weather in New York is 17°C with cloudy skies. The temperature is comfortable and it's a good day for outdoor activities. Please remember to stay hydrated and wear sun protection if needed. Is there anything else you would like to know?", 'timestamp': '2025-10-21T20:32:46.946010', 'user_input': 'what about the weather in New York'}
+2025-10-21 20:32:46,946 - config - INFO - Voice input result: {'success': True, 'response': "The current weather in New York is 17°C with cloudy skies. The temperature is comfortable and it's a good day for outdoor activities. Please remember to stay hydrated and wear sun protection if needed. Is there anything else you would like to know?", 'timestamp': '2025-10-21T20:32:46.946010', 'user_input': 'what about the weather in New York'}
+2025-10-21 20:32:46,946 - config - INFO - User input in result: what about the weather in New York
+2025-10-21 20:32:46,947 - config - INFO - Added user_input to response: what about the weather in New York
+2025-10-21 20:32:46,947 - config - INFO - Sending response_data: {'type': 'response', 'success': True, 'response': "The current weather in New York is 17°C with cloudy skies. The temperature is comfortable and it's a good day for outdoor activities. Please remember to stay hydrated and wear sun protection if needed. Is there anything else you would like to know?", 'framework': 'LangChain', 'timestamp': '2025-10-21T20:32:46.947015', 'user_input': 'what about the weather in New York'}
+2025-10-21 20:33:34,884 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:33:35,227 - external_apis - INFO - 获取天气信息成功: Beijing (Beijing)
+2025-10-21 20:33:40,973 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 20:36:36,019 - config - INFO - WebSocket connection closed
+2025-10-21 20:36:36,019 - config - INFO - Conversation stopped
+2025-10-21 20:36:36,128 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 20:36:36,128 - config - INFO - Conversation stopped
+2025-10-21 20:41:13,051 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 20:41:13,051 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 20:41:13,143 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 20:41:13,499 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:41:13,499 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:41:13,499 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:41:13,884 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:41:13,885 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:41:13,885 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:41:13,886 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 20:41:13,886 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 20:41:13,904 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 20:41:13,905 - config - INFO - Found existing user: 张大爷
+2025-10-21 20:49:23,883 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 20:49:23,883 - config - INFO - Conversation stopped
+2025-10-21 20:49:27,580 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 20:49:27,581 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 20:49:27,669 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 20:49:28,032 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:49:28,032 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:49:28,032 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:49:28,411 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:49:28,411 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:49:28,411 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:49:28,412 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 20:49:28,412 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 20:49:28,432 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 20:49:28,432 - config - INFO - Found existing user: 张大爷
+2025-10-21 20:53:09,834 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 20:53:09,834 - config - INFO - Conversation stopped
+2025-10-21 20:53:13,287 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 20:53:13,287 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 20:53:13,373 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 20:53:13,727 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:53:13,727 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:53:13,727 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:53:14,116 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:53:14,116 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:53:14,116 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:53:14,118 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 20:53:14,118 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 20:53:14,136 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 20:53:14,137 - config - INFO - Found existing user: 张大爷
+2025-10-21 20:55:46,248 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 20:55:46,248 - config - INFO - Conversation stopped
+2025-10-21 20:55:50,179 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 20:55:50,179 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 20:55:50,271 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 20:55:50,634 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:55:50,634 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:55:50,634 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:55:51,018 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:55:51,018 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:55:51,018 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:55:51,020 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 20:55:51,020 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 20:55:51,038 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 20:55:51,038 - config - INFO - Found existing user: 张大爷
+2025-10-21 20:56:31,885 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 20:56:31,885 - config - INFO - Conversation stopped
+2025-10-21 20:56:35,571 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 20:56:35,571 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 20:56:35,655 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 20:56:36,012 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:56:36,012 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:56:36,013 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:56:36,401 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 20:56:36,401 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 20:56:36,401 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 20:56:36,402 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 20:56:36,402 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 20:56:36,421 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 20:56:36,421 - config - INFO - Found existing user: 张大爷
+2025-10-21 21:00:05,443 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 21:00:05,443 - config - INFO - Conversation stopped
+2025-10-21 21:00:09,037 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 21:00:09,038 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 21:00:09,122 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 21:00:09,480 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:00:09,480 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:00:09,481 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:00:09,868 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:00:09,868 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:00:09,868 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:00:09,869 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 21:00:09,869 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 21:00:09,890 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 21:00:09,890 - config - INFO - Found existing user: 张大爷
+2025-10-21 21:01:41,308 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 21:01:41,308 - config - INFO - Conversation stopped
+2025-10-21 21:01:44,461 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 21:01:44,461 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 21:01:44,549 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 21:01:44,903 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:01:44,903 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:01:44,903 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:01:45,283 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:01:45,284 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:01:45,284 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:01:45,285 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 21:01:45,285 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 21:01:45,303 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 21:01:45,303 - config - INFO - Found existing user: 张大爷
+2025-10-21 21:07:06,811 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 21:07:06,811 - config - INFO - Conversation stopped
+2025-10-21 21:07:15,740 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 21:07:15,740 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 21:07:15,830 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 21:07:16,199 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:07:16,200 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:07:16,200 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:07:16,590 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:07:16,590 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:07:16,590 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:07:16,591 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 21:07:16,592 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 21:07:16,610 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 21:07:16,610 - config - INFO - Found existing user: 张大爷
+2025-10-21 21:07:22,895 - config - INFO - WebSocket connection established
+2025-10-21 21:07:50,763 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:07:57,113 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 21:07:58,649 - voice_processor - INFO - Please start speaking...
+2025-10-21 21:08:01,348 - voice_processor - INFO - Recognizing speech...
+2025-10-21 21:08:01,645 - voice_processor - WARNING - Could not understand speech
+2025-10-21 21:08:01,646 - config - INFO - Voice input result: {'success': False, 'message': 'No voice input detected', 'response': "Sorry, I didn't catch that. Please speak again."}
+2025-10-21 21:08:01,646 - config - INFO - User input in result: NOT FOUND
+2025-10-21 21:08:01,646 - config - WARNING - No user_input found in result
+2025-10-21 21:08:01,646 - config - INFO - Sending response_data: {'type': 'response', 'success': False, 'response': "Sorry, I didn't catch that. Please speak again.", 'framework': 'LangChain', 'timestamp': '2025-10-21T21:08:01.646536'}
+2025-10-21 21:09:15,916 - config - INFO - WebSocket connection closed
+2025-10-21 21:09:15,916 - config - INFO - Conversation stopped
+2025-10-21 21:09:16,009 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 21:09:16,009 - config - INFO - Conversation stopped
+2025-10-21 21:09:19,372 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 21:09:19,372 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 21:09:19,461 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 21:09:19,815 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:09:19,816 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:09:19,816 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:09:20,214 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:09:20,214 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:09:20,214 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:09:20,215 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 21:09:20,215 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 21:09:20,240 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 21:09:20,241 - config - INFO - Found existing user: 张大爷
+2025-10-21 21:09:33,502 - config - INFO - WebSocket connection established
+2025-10-21 21:09:50,572 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 21:09:52,158 - voice_processor - INFO - Please start speaking...
+2025-10-21 21:09:53,857 - voice_processor - INFO - Recognizing speech...
+2025-10-21 21:09:54,303 - voice_processor - INFO - Recognition result: how is the weather in
+2025-10-21 21:09:54,305 - config - INFO - User voice input: how is the weather in
+2025-10-21 21:09:55,201 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:09:56,270 - config - INFO - Added user_input to result: how is the weather in
+2025-10-21 21:09:56,270 - config - INFO - Complete result before return: {'success': True, 'response': "It seems like you want to know the weather, but you didn't mention the city name. Could you please tell me which city's weather you want to know about?", 'timestamp': '2025-10-21T21:09:56.270854', 'user_input': 'how is the weather in'}
+2025-10-21 21:09:56,270 - config - INFO - Voice input result: {'success': True, 'response': "It seems like you want to know the weather, but you didn't mention the city name. Could you please tell me which city's weather you want to know about?", 'timestamp': '2025-10-21T21:09:56.270854', 'user_input': 'how is the weather in'}
+2025-10-21 21:09:56,270 - config - INFO - User input in result: how is the weather in
+2025-10-21 21:09:56,270 - config - INFO - Added user_input to response: how is the weather in
+2025-10-21 21:09:56,270 - config - INFO - Sending response_data: {'type': 'response', 'success': True, 'response': "It seems like you want to know the weather, but you didn't mention the city name. Could you please tell me which city's weather you want to know about?", 'framework': 'LangChain', 'timestamp': '2025-10-21T21:09:56.270854', 'user_input': 'how is the weather in'}
+2025-10-21 21:09:59,248 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 21:10:00,434 - voice_processor - INFO - Please start speaking...
+2025-10-21 21:10:01,874 - voice_processor - INFO - Recognizing speech...
+2025-10-21 21:10:02,272 - voice_processor - INFO - Recognition result: New York City
+2025-10-21 21:10:02,274 - config - INFO - User voice input: New York City
+2025-10-21 21:10:03,166 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:10:03,576 - external_apis - INFO - 获取天气信息成功: New York City (New York City)
+2025-10-21 21:10:04,515 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:10:05,665 - config - INFO - Added user_input to result: New York City
+2025-10-21 21:10:05,666 - config - INFO - Complete result before return: {'success': True, 'response': 'The current weather in New York City is 17°C, cloudy. The temperature is comfortable and suitable for outdoor activities. Please remember to wear suitable clothing and stay hydrated.', 'timestamp': '2025-10-21T21:10:05.665075', 'user_input': 'New York City'}
+2025-10-21 21:10:05,666 - config - INFO - Voice input result: {'success': True, 'response': 'The current weather in New York City is 17°C, cloudy. The temperature is comfortable and suitable for outdoor activities. Please remember to wear suitable clothing and stay hydrated.', 'timestamp': '2025-10-21T21:10:05.665075', 'user_input': 'New York City'}
+2025-10-21 21:10:05,666 - config - INFO - User input in result: New York City
+2025-10-21 21:10:05,666 - config - INFO - Added user_input to response: New York City
+2025-10-21 21:10:05,666 - config - INFO - Sending response_data: {'type': 'response', 'success': True, 'response': 'The current weather in New York City is 17°C, cloudy. The temperature is comfortable and suitable for outdoor activities. Please remember to wear suitable clothing and stay hydrated.', 'framework': 'LangChain', 'timestamp': '2025-10-21T21:10:05.666079', 'user_input': 'New York City'}
+2025-10-21 21:14:52,402 - config - INFO - WebSocket connection closed
+2025-10-21 21:14:52,402 - config - INFO - Conversation stopped
+2025-10-21 21:15:03,898 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 21:15:03,898 - config - INFO - Conversation stopped
+2025-10-21 21:15:12,399 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 21:15:12,399 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 21:15:12,487 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 21:15:12,845 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:15:12,846 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:15:12,846 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:15:13,229 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:15:13,230 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:15:13,230 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:15:13,230 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 21:15:13,232 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 21:15:13,250 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 21:15:13,252 - config - INFO - Found existing user: 张大爷
+2025-10-21 21:15:16,905 - config - INFO - WebSocket connection established
+2025-10-21 21:16:25,407 - config - INFO - WebSocket connection closed
+2025-10-21 21:16:25,408 - config - INFO - Conversation stopped
+2025-10-21 21:16:27,721 - config - INFO - WebSocket connection established
+2025-10-21 21:19:37,887 - config - INFO - WebSocket connection closed
+2025-10-21 21:19:37,887 - config - INFO - Conversation stopped
+2025-10-21 21:19:37,993 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 21:19:37,993 - config - INFO - Conversation stopped
+2025-10-21 21:19:41,422 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 21:19:41,422 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 21:19:41,515 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 21:19:41,891 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:19:41,891 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:19:41,892 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:19:42,289 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:19:42,289 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:19:42,289 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:19:42,290 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 21:19:42,290 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 21:19:42,308 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 21:19:42,309 - config - INFO - Found existing user: 张大爷
+2025-10-21 21:20:03,253 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 21:20:03,253 - config - INFO - Conversation stopped
+2025-10-21 21:20:07,854 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 21:20:07,854 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 21:20:07,943 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 21:20:08,311 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:20:08,311 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:20:08,311 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:20:08,708 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:20:08,709 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:20:08,709 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:20:08,710 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 21:20:08,710 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 21:20:08,729 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 21:20:08,729 - config - INFO - Found existing user: 张大爷
+2025-10-21 21:20:44,971 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 21:20:44,971 - config - INFO - Conversation stopped
+2025-10-21 21:20:48,371 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 21:20:48,372 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 21:20:48,456 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 21:20:48,814 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:20:48,814 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:20:48,814 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:20:49,198 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:20:49,199 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:20:49,199 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:20:49,200 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 21:20:49,200 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 21:20:49,218 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 21:20:49,218 - config - INFO - Found existing user: 张大爷
+2025-10-21 21:21:10,680 - config - INFO - WebSocket connection established
+2025-10-21 21:21:35,149 - data_manager - INFO - 添加用户: hongdao, ID: 22
+2025-10-21 21:21:43,094 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:21:57,282 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 21:21:58,848 - voice_processor - INFO - Please start speaking...
+2025-10-21 21:22:02,758 - voice_processor - INFO - Recognizing speech...
+2025-10-21 21:22:04,346 - voice_processor - INFO - Recognition result: U-Haul request a new ringtone
+2025-10-21 21:22:04,347 - config - INFO - User voice input: U-Haul request a new ringtone
+2025-10-21 21:22:05,050 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:22:07,157 - config - INFO - Added user_input to result: U-Haul request a new ringtone
+2025-10-21 21:22:07,158 - config - INFO - Complete result before return: {'success': True, 'response': "I'm sorry, but as a health assistant AI, I'm unable to assist with requests related to ringtones. My main responsibilities include managing medications, recording health information, scheduling doctor appointments, and handling emergency medical situations. How can I assist you with your health needs today?", 'timestamp': '2025-10-21T21:22:07.157998', 'user_input': 'U-Haul request a new ringtone'}
+2025-10-21 21:22:07,158 - config - INFO - Voice input result: {'success': True, 'response': "I'm sorry, but as a health assistant AI, I'm unable to assist with requests related to ringtones. My main responsibilities include managing medications, recording health information, scheduling doctor appointments, and handling emergency medical situations. How can I assist you with your health needs today?", 'timestamp': '2025-10-21T21:22:07.157998', 'user_input': 'U-Haul request a new ringtone'}
+2025-10-21 21:22:07,158 - config - INFO - User input in result: U-Haul request a new ringtone
+2025-10-21 21:22:07,158 - config - INFO - Added user_input to response: U-Haul request a new ringtone
+2025-10-21 21:22:07,158 - config - INFO - Sending response_data: {'type': 'response', 'success': True, 'response': "I'm sorry, but as a health assistant AI, I'm unable to assist with requests related to ringtones. My main responsibilities include managing medications, recording health information, scheduling doctor appointments, and handling emergency medical situations. How can I assist you with your health needs today?", 'framework': 'LangChain', 'timestamp': '2025-10-21T21:22:07.158997', 'user_input': 'U-Haul request a new ringtone'}
+2025-10-21 21:22:14,798 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 21:22:16,394 - voice_processor - INFO - Please start speaking...
+2025-10-21 21:22:22,484 - voice_processor - INFO - Recognizing speech...
+2025-10-21 21:22:22,864 - voice_processor - WARNING - Could not understand speech
+2025-10-21 21:22:22,864 - config - INFO - Voice input result: {'success': False, 'message': 'No voice input detected', 'response': "Sorry, I didn't catch that. Please speak again."}
+2025-10-21 21:22:22,864 - config - INFO - User input in result: NOT FOUND
+2025-10-21 21:22:22,864 - config - WARNING - No user_input found in result
+2025-10-21 21:22:22,864 - config - INFO - Sending response_data: {'type': 'response', 'success': False, 'response': "Sorry, I didn't catch that. Please speak again.", 'framework': 'LangChain', 'timestamp': '2025-10-21T21:22:22.864506'}
+2025-10-21 21:22:28,303 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 21:22:29,439 - voice_processor - INFO - Please start speaking...
+2025-10-21 21:22:32,090 - voice_processor - INFO - Recognizing speech...
+2025-10-21 21:22:32,675 - voice_processor - WARNING - Could not understand speech
+2025-10-21 21:22:32,676 - config - INFO - Voice input result: {'success': False, 'message': 'No voice input detected', 'response': "Sorry, I didn't catch that. Please speak again."}
+2025-10-21 21:22:32,676 - config - INFO - User input in result: NOT FOUND
+2025-10-21 21:22:32,676 - config - WARNING - No user_input found in result
+2025-10-21 21:22:32,676 - config - INFO - Sending response_data: {'type': 'response', 'success': False, 'response': "Sorry, I didn't catch that. Please speak again.", 'framework': 'LangChain', 'timestamp': '2025-10-21T21:22:32.676767'}
+2025-10-21 21:22:41,795 - voice_processor - INFO - Adjusting for ambient noise...
+2025-10-21 21:22:42,982 - voice_processor - INFO - Please start speaking...
+2025-10-21 21:22:45,652 - voice_processor - INFO - Recognizing speech...
+2025-10-21 21:22:46,170 - voice_processor - INFO - Recognition result: hello could you speak Chinese
+2025-10-21 21:22:46,171 - config - INFO - User voice input: hello could you speak Chinese
+2025-10-21 21:22:47,954 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:22:49,348 - config - INFO - Added user_input to result: hello could you speak Chinese
+2025-10-21 21:22:49,348 - config - INFO - Complete result before return: {'success': True, 'response': '当然可以，您需要我帮助您处理哪些健康相关的事务呢？例如设定药物提醒，记录健康信息，或者是安排看医生的预约。', 'timestamp': '2025-10-21T21:22:49.348623', 'user_input': 'hello could you speak Chinese'}
+2025-10-21 21:22:49,349 - config - INFO - Voice input result: {'success': True, 'response': '当然可以，您需要我帮助您处理哪些健康相关的事务呢？例如设定药物提醒，记录健康信息，或者是安排看医生的预约。', 'timestamp': '2025-10-21T21:22:49.348623', 'user_input': 'hello could you speak Chinese'}
+2025-10-21 21:22:49,349 - config - INFO - User input in result: hello could you speak Chinese
+2025-10-21 21:22:49,349 - config - INFO - Added user_input to response: hello could you speak Chinese
+2025-10-21 21:22:49,349 - config - INFO - Sending response_data: {'type': 'response', 'success': True, 'response': '当然可以，您需要我帮助您处理哪些健康相关的事务呢？例如设定药物提醒，记录健康信息，或者是安排看医生的预约。', 'framework': 'LangChain', 'timestamp': '2025-10-21T21:22:49.349624', 'user_input': 'hello could you speak Chinese'}
+2025-10-21 21:24:20,431 - config - INFO - WebSocket connection closed
+2025-10-21 21:24:20,431 - config - INFO - Conversation stopped
+2025-10-21 21:25:31,193 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 21:25:31,193 - config - INFO - Conversation stopped
+2025-10-21 21:27:03,745 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 21:27:03,745 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 21:27:03,831 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 21:27:04,193 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:27:04,194 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:27:04,194 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:27:04,573 - data_manager - INFO - 健康数据管理器初始化完成
+2025-10-21 21:27:04,574 - external_apis - INFO - 外部API管理器初始化完成
+2025-10-21 21:27:04,574 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:27:04,575 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 21:27:04,575 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 21:27:04,594 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 21:27:04,594 - config - INFO - Found existing user: 张大爷
+2025-10-21 21:27:27,864 - config - INFO - User 1 and all related data deleted
+2025-10-21 21:27:42,530 - config - INFO - User 2 and all related data deleted
+2025-10-21 21:27:45,229 - config - INFO - User 3 and all related data deleted
+2025-10-21 21:27:48,042 - config - INFO - User 4 and all related data deleted
+2025-10-21 21:27:52,272 - config - INFO - User 5 and all related data deleted
+2025-10-21 21:27:56,010 - config - INFO - User 6 and all related data deleted
+2025-10-21 21:27:58,814 - config - INFO - User 7 and all related data deleted
+2025-10-21 21:28:01,310 - config - INFO - User 8 and all related data deleted
+2025-10-21 21:28:03,480 - config - INFO - User 9 and all related data deleted
+2025-10-21 21:28:05,759 - config - INFO - User 10 and all related data deleted
+2025-10-21 21:28:07,881 - config - INFO - User 11 and all related data deleted
+2025-10-21 21:28:10,476 - config - INFO - User 12 and all related data deleted
+2025-10-21 21:28:12,779 - config - INFO - User 13 and all related data deleted
+2025-10-21 21:28:14,919 - config - INFO - User 14 and all related data deleted
+2025-10-21 21:28:17,301 - config - INFO - User 15 and all related data deleted
+2025-10-21 21:28:19,949 - config - INFO - User 16 and all related data deleted
+2025-10-21 21:28:21,979 - config - INFO - User 17 and all related data deleted
+2025-10-21 21:28:24,202 - config - INFO - User 18 and all related data deleted
+2025-10-21 21:28:26,559 - config - INFO - User 19 and all related data deleted
+2025-10-21 21:28:29,413 - config - INFO - User 20 and all related data deleted
+2025-10-21 21:28:31,928 - config - INFO - User 21 and all related data deleted
+2025-10-21 21:28:51,205 - config - INFO - WebSocket connection established
+2025-10-21 21:29:14,569 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:30:33,125 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:30:33,530 - external_apis - INFO - 获取天气信息成功: new york (new york)
+2025-10-21 21:30:35,091 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:30:56,274 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:30:57,289 - data_manager - INFO - 添加药物: 高血压药, 用户ID: 22
+2025-10-21 21:30:57,291 - data_manager - INFO - 添加提醒: Medication Reminder - 高血压药, 用户ID: 22
+2025-10-21 21:30:57,887 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:31:24,300 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:31:25,429 - data_manager - INFO - 添加药物: 糖尿病药, 用户ID: 22
+2025-10-21 21:31:25,431 - data_manager - INFO - 添加提醒: Medication Reminder - 糖尿病药, 用户ID: 22
+2025-10-21 21:31:26,577 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:31:39,595 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:31:40,360 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:34:30,710 - config - INFO - WebSocket connection closed
+2025-10-21 21:34:30,710 - config - INFO - Conversation stopped
+2025-10-21 21:34:30,817 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 21:34:30,817 - config - INFO - Conversation stopped
+2025-10-21 21:44:40,805 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'E:\\CursorData\\voice-driven-AI-agents\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-10-21 21:44:40,805 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'E:\CursorData\voice-driven-AI-agents\venv\Lib\site-packages\comtypes\gen'
+2025-10-21 21:44:40,893 - voice_processor - INFO - Voice processor initialized successfully
+2025-10-21 21:44:41,296 - data_manager - INFO - Health data manager initialized successfully
+2025-10-21 21:44:41,296 - external_apis - INFO - External API manager initialized successfully
+2025-10-21 21:44:41,296 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:44:41,673 - data_manager - INFO - Health data manager initialized successfully
+2025-10-21 21:44:41,674 - external_apis - INFO - External API manager initialized successfully
+2025-10-21 21:44:41,674 - langchain_tools - INFO - Created 7 health assistant tools
+2025-10-21 21:44:41,675 - langgraph_workflow - INFO - Health assistant workflow initialized successfully
+2025-10-21 21:44:41,675 - config - INFO - LangChain Health Assistant initialized successfully
+2025-10-21 21:44:41,695 - config - INFO - Intelligent Health Assistant API service starting
+2025-10-21 21:44:41,705 - data_manager - INFO - Added user: Demo User, ID: 23
+2025-10-21 21:44:41,705 - config - INFO - User profile setup complete: Demo User, ID: 23
+2025-10-21 21:44:41,708 - data_manager - INFO - Added medication: Blood Pressure Medication, User ID: 23
+2025-10-21 21:44:41,708 - config - INFO - Added medication: Blood Pressure Medication
+2025-10-21 21:44:41,708 - config - INFO - Demo user profile created
+2025-10-21 21:45:01,102 - config - INFO - WebSocket connection established
+2025-10-21 21:45:25,211 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:45:26,719 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 21:48:24,907 - config - INFO - WebSocket connection closed
+2025-10-21 21:48:24,908 - config - INFO - Conversation stopped
+2025-10-21 21:48:25,017 - config - INFO - Intelligent Health Assistant API service shutting down
+2025-10-21 21:48:25,017 - config - INFO - Conversation stopped

@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Health Assistant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #212121;
+            color: #ffffff;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* 主布局 */
+        .app-container {
+            display: flex;
+            height: calc(100vh - 40px); /* 减去新的导航栏高度 */
+            margin-top: 40px; /* 为导航栏留出空间 */
+        }
+        
+        /* 侧边栏 */
+        .sidebar {
+            width: 260px;
+            background: #171717;
+            border-right: 1px solid #2d2d2d;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar.collapsed {
+            width: 60px;
+        }
+        
+        .sidebar-header {
+            padding: 16px;
+            border-bottom: 1px solid #2d2d2d;
+        }
+        
+        .new-chat-btn {
+            width: 100%;
+            padding: 12px 16px;
+            background: transparent;
+            border: 1px solid #4d4d4d;
+            border-radius: 8px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .new-chat-btn:hover {
+            background: #2d2d2d;
+        }
+        
+        .sidebar.collapsed .new-chat-btn span {
+            display: none;
+        }
+        
+        .sidebar.collapsed .new-chat-btn {
+            justify-content: center;
+            padding: 12px;
+        }
+        
+        /* 用户信息 */
+        .user-section {
+            padding: 16px;
+            border-bottom: 1px solid #2d2d2d;
+            margin-bottom: 16px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .user-info:hover {
+            background: #2d2d2d;
+        }
+        
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background: #4d4d4d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .user-details {
+            flex: 1;
+        }
+        
+        .user-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .user-status {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .sidebar.collapsed .user-details {
+            display: none;
+        }
+        
+        /* 聊天历史 */
+        .chat-history {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 16px;
+        }
+        
+        .chat-item {
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 4px;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .chat-item:hover {
+            background: #2d2d2d;
+        }
+        
+        .chat-item.active {
+            background: #2d4d2d;
+        }
+        
+        .chat-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+        }
+        
+        .chat-title {
+            font-size: 14px;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .sidebar.collapsed .chat-title {
+            display: none;
+        }
+        
+        /* 主内容区域 */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #212121;
+        }
+        
+        .main-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid #2d2d2d;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .page-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .header-btn {
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid #4d4d4d;
+            border-radius: 6px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .header-btn:hover {
+            background: #2d2d2d;
+        }
+        
+        .header-btn.primary {
+            background: #10a37f;
+            border-color: #10a37f;
+        }
+        
+        .header-btn.primary:hover {
+            background: #0d8a6b;
+        }
+        
+        /* 聊天区域 */
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+            scroll-behavior: smooth;
+        }
+        
+        .message {
+            margin-bottom: 24px;
+            display: flex;
+            gap: 16px;
+        }
+        
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .message.user .message-avatar {
+            background: #10a37f;
+        }
+        
+        .message.assistant .message-avatar {
+            background: #4d4d4d;
+        }
+        
+        .message.system .message-avatar {
+            background: #ff6b6b;
+        }
+        
+        .message-content {
+            flex: 1;
+            padding-top: 4px;
+        }
+        
+        .message-text {
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        .message-time {
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+        }
+        
+        /* 输入区域 */
+        .input-container {
+            padding: 16px 24px 20px 24px; /* 减少顶部内边距，增加底部内边距 */
+            border-top: 1px solid #2d2d2d;
+            background: #212121;
+            flex-shrink: 0; /* 防止被压缩 */
+        }
+        
+        .input-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .input-box {
+            width: 100%;
+            padding: 12px 50px 12px 16px; /* 减少内边距 */
+            background: #2d2d2d;
+            border: 1px solid #4d4d4d;
+            border-radius: 8px; /* 减少圆角 */
+            color: #ffffff;
+            font-size: 14px; /* 稍微减小字体 */
+            resize: none;
+            outline: none;
+            transition: border-color 0.2s ease;
+            min-height: 44px; /* 减少最小高度 */
+            max-height: 120px; /* 减少最大高度 */
+            line-height: 1.4;
+        }
+        
+        .input-box:focus {
+            border-color: #10a37f;
+        }
+        
+        .input-box::placeholder {
+            color: #888;
+        }
+        
+        .input-actions {
+            position: absolute;
+            right: 8px; /* 减少右边距 */
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 6px; /* 减少按钮间距 */
+        }
+        
+        .input-btn {
+            width: 28px; /* 减小按钮尺寸 */
+            height: 28px;
+            background: transparent;
+            border: none;
+            border-radius: 4px; /* 减少圆角 */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+            font-size: 14px; /* 减小图标大小 */
+        }
+        
+        .input-btn:hover {
+            background: #4d4d4d;
+        }
+        
+        .input-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .send-btn {
+            background: #10a37f;
+        }
+        
+        .send-btn:hover {
+            background: #0d8a6b;
+        }
+        
+        /* 状态指示器 */
+        .status-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .status-indicator.connected {
+            background: #10a37f;
+            color: white;
+        }
+        
+        .status-indicator.disconnected {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .status-indicator.connecting {
+            background: #ffa500;
+            color: white;
+        }
+        
+        /* 模态框 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #2d2d2d;
+            border-radius: 12px;
+            padding: 32px;
+            width: 90%;
+            max-width: 400px;
+            border: 1px solid #4d4d4d;
+        }
+        
+        .modal-header {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .modal-subtitle {
+            color: #888;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: #1a1a1a;
+            border: 1px solid #4d4d4d;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        
+        .form-input:focus {
+            border-color: #10a37f;
+        }
+        
+        .form-input::placeholder {
+            color: #666;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        
+        .close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #888;
+        }
+        
+        .close:hover {
+            color: #fff;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary {
+            background: #10a37f;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0d8a6b;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #888;
+            border: 1px solid #4d4d4d;
+        }
+        
+        .btn-secondary:hover {
+            background: #2d2d2d;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #ff5252;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* 用户列表 */
+        .user-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 16px 0;
+        }
+        
+        .loading-text {
+            text-align: center;
+            color: #888;
+            padding: 20px;
+        }
+        
+        .loading-text button {
+            margin: 5px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .loading-text .btn-primary {
+            background: #10a37f;
+            color: white;
+        }
+        
+        .loading-text .btn-primary:hover {
+            background: #0d8a6b;
+        }
+        
+        .loading-text .btn-secondary {
+            background: transparent;
+            color: #888;
+            border: 1px solid #4d4d4d;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .user-item {
+            padding: 12px;
+            border: 1px solid #4d4d4d;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .user-item:hover {
+            background: #1a1a1a;
+            border-color: #10a37f;
+        }
+        
+        .user-item-name {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .user-item-details {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .user-item-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .btn-small {
+            padding: 4px 8px;
+            border: none;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-small.btn-primary {
+            background: #10a37f;
+            color: white;
+        }
+        
+        .btn-small.btn-primary:hover {
+            background: #0d8a6b;
+        }
+        
+        .btn-small.btn-danger {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .btn-small.btn-danger:hover {
+            background: #ff5252;
+        }
+        
+        /* 导航栏 */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #171717;
+            border-bottom: 1px solid #2d2d2d;
+            padding: 8px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            height: 48px; /* 固定高度，更紧凑 */
+        }
+        
+        .nav-brand {
+            font-size: 16px;
+            font-weight: 600;
+            color: #10a37f;
+        }
+        
+        .nav-status {
+            font-size: 13px;
+            font-weight: 500;
+            color: #ff6b6b;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .nav-status.connected {
+            color: #10a37f;
+        }
+        
+        .nav-status.connecting {
+            color: #ffa500;
+        }
+        
+        .nav-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .nav-btn {
+            padding: 6px 12px;
+            background: transparent;
+            border: 1px solid #4d4d4d;
+            border-radius: 6px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            height: 32px; /* 固定按钮高度 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-btn:hover {
+            background: #2d2d2d;
+            border-color: #10a37f;
+        }
+        
+        .nav-btn.active {
+            background: #10a37f;
+            border-color: #10a37f;
+        }
+        
+        /* 主内容区域调整 */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #212121;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .app-container {
+                height: calc(100vh - 44px); /* 移动端导航栏更矮 */
+                margin-top: 44px;
+            }
+            
+            .nav-bar {
+                padding: 6px 16px;
+                height: 44px; /* 移动端更紧凑 */
+            }
+            
+            .nav-brand {
+                font-size: 14px;
+            }
+            
+            .nav-status {
+                font-size: 12px;
+            }
+            
+            .nav-btn {
+                padding: 4px 8px;
+                font-size: 11px;
+                height: 28px;
+            }
+            
+            .sidebar {
+                position: fixed;
+                left: -260px;
+                z-index: 1000;
+                height: 100vh;
+                transition: left 0.3s ease;
+            }
+            
+            .sidebar.open {
+                left: 0;
+            }
+            
+            .main-content {
+                width: 100%;
+            }
+            
+            .chat-messages {
+                padding: 16px;
+            }
+            
+            .input-container {
+                padding: 12px 16px 16px 16px; /* 移动端更紧凑 */
+            }
+            
+            .input-box {
+                padding: 10px 40px 10px 12px; /* 移动端减少内边距 */
+                font-size: 13px;
+                min-height: 40px;
+            }
+            
+            .input-btn {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+            
+            .login-container {
+                margin: 20px;
+                padding: 24px;
+            }
+            
+            .login-title {
+                font-size: 24px;
+            }
+            
+            .message {
+                margin-bottom: 16px;
+            }
+            
+            .message-text {
+            font-size: 14px;
+            }
+            
+            .input-box {
+                font-size: 14px;
+                padding: 12px 50px 12px 16px;
+            }
+            
+            .header-actions {
+                gap: 8px;
+            }
+            
+            .header-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-actions {
+                gap: 6px;
+            }
+            
+            .nav-btn {
+                padding: 4px 8px;
+                font-size: 11px;
+            }
+            
+            .login-container {
+                margin: 10px;
+                padding: 20px;
+            }
+            
+            .login-title {
+                font-size: 20px;
+            }
+            
+            .chat-messages {
+                padding: 12px;
+            }
+            
+            .input-container {
+                padding: 8px 12px 12px 12px; /* 小屏幕更紧凑 */
+            }
+            
+            .input-box {
+                padding: 8px 36px 8px 10px; /* 小屏幕进一步减少内边距 */
+                font-size: 12px;
+                min-height: 36px;
+            }
+            
+            .input-btn {
+                width: 22px;
+                height: 22px;
+                font-size: 11px;
+            }
+            
+            .message {
+                gap: 8px;
+            }
+            
+            .message-avatar {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+            
+            .message-text {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <div class="nav-brand">🏥 Health Assistant</div>
+        <div class="nav-status" id="navStatus">Not Connected</div>
+        <div class="nav-actions">
+            <button class="nav-btn" id="loginBtn">Login</button>
+            <button class="nav-btn" id="registerBtn">Register</button>
+            <button class="nav-btn" id="logoutBtn" class="hidden">Logout</button>
+        </div>
+        </div>
+        
+    <!-- 聊天页面 -->
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="new-chat-btn" onclick="app.startNewChat()">
+                    <span>+</span>
+                    <span>New Chat</span>
+                </button>
+        </div>
+        
+            <div class="user-section">
+                <div class="user-info" onclick="app.showUserMenu()">
+                    <div class="user-avatar" id="userAvatar">?</div>
+                    <div class="user-details">
+                        <div class="user-name" id="userName">Guest</div>
+                        <div class="user-status" id="userStatus">Not logged in</div>
+                    </div>
+                </div>
+        </div>
+        
+            <div class="chat-history" id="chatHistory">
+                <!-- 聊天历史将在这里动态生成 -->
+            </div>
+        </div>
+        
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <div class="main-header">
+                <div class="page-title" id="pageTitle">Intelligent Health Assistant</div>
+                <div class="header-actions">
+                    <button class="header-btn" onclick="app.toggleSidebar()">☰</button>
+                    <button class="header-btn primary" onclick="app.connect()" id="connectBtn">Connect Service</button>
+                </div>
+            </div>
+            
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+            <div class="message system">
+                        <div class="message-avatar">🏥</div>
+                        <div class="message-content">
+                            <div class="message-text">Welcome to Intelligent Health Assistant! Click "Connect Service" to start chatting.</div>
+                            <div class="message-time" id="welcomeTime"></div>
+                        </div>
+            </div>
+        </div>
+        
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <textarea 
+                            class="input-box" 
+                            id="messageInput" 
+                            placeholder="Ask me anything about your health..." 
+                            rows="1"
+                            disabled
+                        ></textarea>
+                        <div class="input-actions">
+                            <button class="input-btn" onclick="app.toggleVoiceInput()" id="voiceBtn" disabled>
+                                🎤
+                            </button>
+                            <button class="input-btn send-btn" onclick="app.sendMessage()" id="sendBtn" disabled>
+                                ➤
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+    <!-- 登录模态框 -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="app.closeLoginModal()">&times;</span>
+                <h2>Login</h2>
+                <p>Select an existing user</p>
+            </div>
+            <div class="user-list" id="userList">
+                <div class="loading-text">
+                    Loading users...
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="app.closeLoginModal()">Cancel</button>
+                <button class="btn btn-danger" onclick="app.clearAllUsers()">Clear All Users</button>
+                <button class="btn btn-primary" onclick="app.showRegisterModal()">Create New Account</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 注册模态框 -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="app.closeRegisterModal()">&times;</span>
+                <h2>Register New User</h2>
+            </div>
+            <form id="registerForm" onsubmit="return false;">
+                <div class="form-group">
+                    <label class="form-label">Name *</label>
+                    <input type="text" class="form-input" id="regName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Age</label>
+                    <input type="number" class="form-input" id="regAge" placeholder="Enter your age" min="1" max="150">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Health Conditions</label>
+                    <input type="text" class="form-input" id="regConditions" placeholder="e.g., Hypertension, Diabetes">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Emergency Contact</label>
+                    <input type="text" class="form-input" id="regContact" placeholder="Phone number">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="app.closeRegisterModal()">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="app.submitRegister()">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        class HealthAssistantApp {
+            constructor() {
+                this.ws = null;
+                this.isConnected = false;
+                this.isListening = false;
+                this.currentUserId = null;
+                this.currentUserName = null;
+                this.currentChatId = null;
+                this.chatHistory = [];
+                this.speechSynthesis = window.speechSynthesis;
+                this.voiceEnabled = true;
+                this.lastInputType = null;
+                
+                this.initElements();
+                this.bindEvents();
+                this.initVoices();
+                this.updateWelcomeTime();
+            }
+            
+            initElements() {
+                this.sidebar = document.getElementById('sidebar');
+                this.chatMessages = document.getElementById('chatMessages');
+                this.messageInput = document.getElementById('messageInput');
+                this.sendBtn = document.getElementById('sendBtn');
+                this.voiceBtn = document.getElementById('voiceBtn');
+                this.navStatus = document.getElementById('navStatus');
+                this.userAvatar = document.getElementById('userAvatar');
+                this.userName = document.getElementById('userName');
+                this.userStatus = document.getElementById('userStatus');
+                this.loginBtn = document.getElementById('loginBtn');
+                this.registerBtn = document.getElementById('registerBtn');
+                this.logoutBtn = document.getElementById('logoutBtn');
+            }
+            
+            bindEvents() {
+                this.messageInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.sendMessage();
+                    }
+                });
+                
+                this.messageInput.addEventListener('input', () => {
+                    this.autoResizeTextarea();
+                });
+                
+                // 登录注册按钮事件
+                this.loginBtn.addEventListener('click', () => this.showLoginModal());
+                this.registerBtn.addEventListener('click', () => this.showRegisterModal());
+                this.logoutBtn.addEventListener('click', () => this.logout());
+                
+                // 点击模态框外部关闭
+                document.getElementById('loginModal').addEventListener('click', (e) => {
+                    if (e.target.id === 'loginModal') {
+                        this.closeLoginModal();
+                    }
+                });
+                
+                document.getElementById('registerModal').addEventListener('click', (e) => {
+                    if (e.target.id === 'registerModal') {
+                        this.closeRegisterModal();
+                    }
+                });
+            }
+            
+            initVoices() {
+                if (this.speechSynthesis) {
+                    if (this.speechSynthesis.getVoices().length === 0) {
+                        this.speechSynthesis.addEventListener('voiceschanged', () => {
+                            this.selectEnglishVoice();
+                        });
+                    } else {
+                        this.selectEnglishVoice();
+                    }
+                }
+            }
+            
+            selectEnglishVoice() {
+                const voices = this.speechSynthesis.getVoices();
+                this.selectedVoice = voices.find(voice => 
+                    voice.lang.includes('en') || voice.lang.includes('US') || voice.lang.includes('GB')
+                ) || voices[0];
+            }
+            
+            speak(text) {
+                if (!this.voiceEnabled || !this.speechSynthesis) return;
+                
+                this.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 1.0;
+                utterance.pitch = 1.0;
+                utterance.volume = 1.0;
+                
+                if (this.selectedVoice) {
+                    utterance.voice = this.selectedVoice;
+                }
+                
+                this.speechSynthesis.speak(utterance);
+            }
+            
+            stopSpeaking() {
+                if (this.speechSynthesis) {
+                    this.speechSynthesis.cancel();
+                }
+            }
+            
+            autoResizeTextarea() {
+                this.messageInput.style.height = 'auto';
+                this.messageInput.style.height = Math.min(this.messageInput.scrollHeight, 200) + 'px';
+            }
+            
+            updateWelcomeTime() {
+                const timeEl = document.getElementById('welcomeTime');
+                if (timeEl) {
+                    timeEl.textContent = new Date().toLocaleTimeString();
+                }
+            }
+            
+            // 路由功能
+            initRouting() {
+                // 根据URL路径初始化页面
+                const path = window.location.pathname;
+                if (path === '/login') {
+                    this.navigateTo('login');
+                } else if (path === '/register') {
+                    this.navigateTo('register');
+                } else if (path === '/chat') {
+                    this.navigateTo('chat');
+                } else {
+                    this.navigateTo('chat');
+                }
+                
+                // 如果当前在登录页面，立即加载用户列表
+                if (this.currentPage === 'login') {
+                    this.loadUsers();
+                }
+            }
+            
+            navigateTo(page) {
+                console.log('Navigating to:', page);
+                // 隐藏所有页面
+                document.querySelectorAll('.page').forEach(p => {
+                    p.classList.remove('active');
+                });
+                
+                // 显示目标页面
+                const targetPage = document.getElementById(page + 'Page');
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    console.log('Page activated:', page + 'Page');
+                } else {
+                    console.error('Page not found:', page + 'Page');
+                }
+                
+                // 更新导航按钮状态
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                const navBtn = document.getElementById('nav' + page.charAt(0).toUpperCase() + page.slice(1));
+                if (navBtn) {
+                    navBtn.classList.add('active');
+                    console.log('Nav button activated:', navBtn.id);
+                } else {
+                    console.log('Nav button not found:', 'nav' + page.charAt(0).toUpperCase() + page.slice(1));
+                }
+                
+                // 更新URL
+                window.history.pushState({}, '', '/' + page);
+                
+                this.currentPage = page;
+                
+                // 页面特定初始化
+                if (page === 'login') {
+                    this.loadUsers();
+                }
+            }
+            
+            async loadUsers() {
+                try {
+                    const response = await fetch('http://localhost:8000/api/user/list');
+                    const data = await response.json();
+                    
+                    const userList = document.getElementById('loginUserList');
+                    if (data.users && data.users.length > 0) {
+                        userList.innerHTML = '';
+                        data.users.forEach(user => {
+                            const userItem = document.createElement('div');
+                            userItem.className = 'user-item';
+                            userItem.innerHTML = `
+                                <div class="user-item-name">${user.name}</div>
+                                <div class="user-item-details">ID: ${user.id} | Age: ${user.age || 'N/A'}</div>
+                            `;
+                            userItem.onclick = () => this.loginUser(user.id);
+                            userList.appendChild(userItem);
+                        });
+                    } else {
+                        // 如果没有用户，显示提示信息并提供创建账户选项
+                        userList.innerHTML = `
+                            <div class="loading-text">
+                                No users found. 
+                                <br><br>
+                                <button class="btn btn-primary" onclick="app.navigateTo('register')">
+                                    Create First Account
+                                </button>
+                            </div>
+                        `;
+                    }
+                } catch (error) {
+                    console.error('Failed to load users:', error);
+                    const userList = document.getElementById('loginUserList');
+                    userList.innerHTML = `
+                        <div class="loading-text error-text">
+                            Failed to load users. 
+                            <br><br>
+                            <button class="btn btn-primary" onclick="app.navigateTo('register')">
+                                Create New Account
+                            </button>
+                            <br>
+                            <button class="btn btn-secondary" onclick="app.loadUsers()">
+                                Retry
+                            </button>
+                        </div>
+                    `;
+                }
+            }
+            
+            continueAsGuest() {
+                console.log('Continue as guest clicked');
+                // 以访客身份继续，设置默认用户信息
+                this.currentUserId = 0; // 使用0作为访客ID
+                this.currentUserName = 'Guest';
+                
+                this.userAvatar.textContent = 'G';
+                this.userName.textContent = 'Guest';
+                this.userStatus.textContent = 'Guest Mode';
+                
+                this.loginBtn.classList.add('hidden');
+                this.registerBtn.classList.add('hidden');
+                this.logoutBtn.classList.remove('hidden');
+                
+                this.messageInput.disabled = false;
+                this.sendBtn.disabled = false;
+                this.voiceBtn.disabled = false;
+                
+                this.updateStatus('disconnected', 'Guest Mode - Ready to Connect');
+                this.navigateTo('chat');
+                this.addMessage('system', 'Welcome! You are using Guest mode. Click "Connect Service" to start chatting.');
+            }
+            
+            async loginUser(userId) {
+                try {
+                    const response = await fetch('http://localhost:8000/api/user/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ user_id: userId })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.currentUserId = data.user_id;
+                        this.currentUserName = data.name;
+                        
+                        this.userAvatar.textContent = data.name.charAt(0).toUpperCase();
+                        this.userName.textContent = data.name;
+                        this.userStatus.textContent = 'Connected';
+                        
+                        this.loginBtn.classList.add('hidden');
+                        this.registerBtn.classList.add('hidden');
+                        this.logoutBtn.classList.remove('hidden');
+                        
+                        this.messageInput.disabled = false;
+                        this.sendBtn.disabled = false;
+                        this.voiceBtn.disabled = false;
+                        
+                        this.updateStatus('disconnected', 'Ready to Connect');
+                        this.addMessage('system', `Welcome back, ${data.name}! Click "Connect Service" to start.`);
+                        
+                        this.navigateTo('chat');
+                    }
+                } catch (error) {
+                    console.error('Login failed:', error);
+                    alert('Login failed: ' + error.message);
+                }
+            }
+            
+            async submitRegister() {
+                const name = document.getElementById('regName').value.trim();
+                if (!name) {
+                    alert('Please enter your name');
+                    return;
+                }
+                
+                const age = document.getElementById('regAge').value;
+                const conditions = document.getElementById('regConditions').value;
+                const contact = document.getElementById('regContact').value;
+                
+                const healthConditions = conditions ? conditions.split(',').map(s => s.trim()) : [];
+                
+                try {
+                    const response = await fetch('http://localhost:8000/api/user/register', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: name,
+                            age: age ? parseInt(age) : null,
+                            health_conditions: healthConditions.length > 0 ? healthConditions : null,
+                            emergency_contact: contact || null
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        alert(`Account created successfully! Welcome, ${name}!`);
+                        await this.loginUser(data.user_id);
+                        this.navigateTo('chat');
+                    }
+                } catch (error) {
+                    console.error('Registration failed:', error);
+                    alert('Registration failed: ' + error.message);
+                }
+            }
+            
+            logout() {
+                this.currentUserId = null;
+                this.currentUserName = null;
+                
+                if (this.isConnected) {
+                    this.ws.close();
+                }
+                
+                this.userAvatar.textContent = '?';
+                this.userName.textContent = 'Guest';
+                this.userStatus.textContent = 'Not logged in';
+                
+                this.loginBtn.classList.remove('hidden');
+                this.registerBtn.classList.remove('hidden');
+                this.logoutBtn.classList.add('hidden');
+                
+                this.messageInput.disabled = true;
+                this.sendBtn.disabled = true;
+                this.voiceBtn.disabled = true;
+                
+                this.updateStatus('disconnected', 'Not Connected');
+                this.clearChat();
+                this.addMessage('system', 'Welcome to Intelligent Health Assistant! Please login to start your health management journey.');
+            }
+            
+            // 聊天功能
+            startNewChat() {
+                this.currentChatId = Date.now().toString();
+                this.chatHistory = [];
+                this.clearChat();
+                this.addMessage('system', 'New conversation started. How can I help you with your health today?');
+            }
+            
+            clearChat() {
+                this.chatMessages.innerHTML = '';
+            }
+            
+            connect() {
+                if (this.isConnected) return;
+                
+                // 如果没有登录，自动设置为访客模式
+                if (this.currentUserId === null) {
+                    this.currentUserId = 0;
+                    this.currentUserName = 'Guest';
+                    this.userAvatar.textContent = 'G';
+                    this.userName.textContent = 'Guest';
+                    this.userStatus.textContent = 'Guest Mode';
+                }
+                
+                this.updateStatus('connecting', 'Connecting...');
+                
+                try {
+                    this.ws = new WebSocket('ws://localhost:8000/ws');
+                    
+                    this.ws.onopen = () => {
+                        this.isConnected = true;
+                        const userName = this.currentUserName || 'Guest';
+                        this.updateStatus('connected', `Connected as ${userName}`);
+                        this.addMessage('system', 'Connected to health assistant service. You can now start chatting!');
+                        
+                        this.messageInput.disabled = false;
+                        this.sendBtn.disabled = false;
+                        this.voiceBtn.disabled = false;
+                    };
+                    
+                    this.ws.onmessage = (event) => {
+                        const data = JSON.parse(event.data);
+                        this.handleMessage(data);
+                    };
+                    
+                    this.ws.onclose = () => {
+                        this.isConnected = false;
+                        this.updateStatus('disconnected', 'Disconnected');
+                        this.addMessage('system', 'Connection lost. Please reconnect.');
+                        
+                        this.messageInput.disabled = true;
+                        this.sendBtn.disabled = true;
+                        this.voiceBtn.disabled = true;
+                    };
+                    
+                    this.ws.onerror = (error) => {
+                        console.error('WebSocket error:', error);
+                        this.updateStatus('disconnected', 'Connection Error');
+                    };
+                    
+                } catch (error) {
+                    console.error('Connection failed:', error);
+                    this.updateStatus('disconnected', 'Connection Failed');
+                }
+            }
+            
+            sendMessage() {
+                const text = this.messageInput.value.trim();
+                if (!text || !this.isConnected) return;
+                
+                this.stopSpeaking();
+                this.addMessage('user', text);
+                this.messageInput.value = '';
+                this.autoResizeTextarea();
+                
+                this.lastInputType = 'text';
+                
+                this.ws.send(JSON.stringify({
+                    type: 'text_input',
+                    text: text
+                }));
+            }
+            
+            toggleVoiceInput() {
+                if (!this.isConnected) return;
+                
+                if (!this.isListening) {
+                    this.startVoiceInput();
+                } else {
+                    this.stopVoiceInput();
+                }
+            }
+            
+            startVoiceInput() {
+                this.stopSpeaking();
+                this.isListening = true;
+                this.voiceBtn.textContent = '⏹';
+                this.voiceBtn.style.background = '#ff6b6b';
+                this.lastInputType = 'voice';
+                this.ws.send(JSON.stringify({ type: 'voice_input' }));
+            }
+            
+            stopVoiceInput() {
+                this.isListening = false;
+                this.voiceBtn.textContent = '🎤';
+                this.voiceBtn.style.background = '';
+            }
+            
+            handleMessage(data) {
+                switch (data.type) {
+                    case 'welcome':
+                        this.addMessage('system', data.message);
+                        this.speak(data.message);
+                        break;
+                    
+                    case 'response':
+                        this.addMessage('assistant', data.response);
+                        
+                        if (this.lastInputType === 'voice' && this.voiceEnabled) {
+                            this.speak(data.response);
+                        }
+                        
+                        this.stopVoiceInput();
+                        break;
+                    
+                    case 'stopped':
+                        this.addMessage('system', data.message);
+                        break;
+                    
+                    case 'error':
+                        this.addMessage('system', `Error: ${data.message}`);
+                        if (this.lastInputType === 'voice' && this.voiceEnabled) {
+                            this.speak(`An error occurred: ${data.message}`);
+                        }
+                        this.stopVoiceInput();
+                        break;
+                }
+            }
+            
+            addMessage(type, content) {
+                const messageEl = document.createElement('div');
+                messageEl.className = `message ${type}`;
+                
+                const avatar = document.createElement('div');
+                avatar.className = 'message-avatar';
+                
+                const messageContent = document.createElement('div');
+                messageContent.className = 'message-content';
+                
+                const messageText = document.createElement('div');
+                messageText.className = 'message-text';
+                messageText.textContent = content;
+                
+                const messageTime = document.createElement('div');
+                messageTime.className = 'message-time';
+                messageTime.textContent = new Date().toLocaleTimeString();
+                
+                switch (type) {
+                    case 'user':
+                        avatar.textContent = this.currentUserName ? this.currentUserName.charAt(0).toUpperCase() : 'U';
+                        break;
+                    case 'assistant':
+                        avatar.textContent = 'AI';
+                        break;
+                    case 'system':
+                        avatar.textContent = '🏥';
+                        break;
+                }
+                
+                messageContent.appendChild(messageText);
+                messageContent.appendChild(messageTime);
+                messageEl.appendChild(avatar);
+                messageEl.appendChild(messageContent);
+                
+                this.chatMessages.appendChild(messageEl);
+                this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+            }
+            
+            updateStatus(type, message) {
+                this.navStatus.textContent = message;
+                this.navStatus.className = `nav-status ${type}`;
+            }
+            
+            toggleSidebar() {
+                this.sidebar.classList.toggle('collapsed');
+            }
+            
+            showUserMenu() {
+                // 可以添加用户菜单功能
+                console.log('User menu clicked');
+            }
+            
+            // 模态框方法
+            showLoginModal() {
+                document.getElementById('loginModal').style.display = 'block';
+                this.loadUsers();
+            }
+            
+            closeLoginModal() {
+                document.getElementById('loginModal').style.display = 'none';
+            }
+            
+            showRegisterModal() {
+                this.closeLoginModal();
+                document.getElementById('registerModal').style.display = 'block';
+            }
+            
+            closeRegisterModal() {
+                document.getElementById('registerModal').style.display = 'none';
+                document.getElementById('registerForm').reset();
+            }
+            
+            async loadUsers() {
+                try {
+                    const response = await fetch('http://localhost:8000/api/user/list');
+                    const data = await response.json();
+                    
+                    const userList = document.getElementById('userList');
+                    if (data.users && data.users.length > 0) {
+                        userList.innerHTML = '';
+                        data.users.forEach(user => {
+                            const userItem = document.createElement('div');
+                            userItem.className = 'user-item';
+                            userItem.innerHTML = `
+                                <div class="user-item-name">${user.name}</div>
+                                <div class="user-item-details">ID: ${user.id} | Age: ${user.age || 'N/A'}</div>
+                                <div class="user-item-actions">
+                                    <button class="btn-small btn-primary" onclick="app.loginUser(${user.id})">Login</button>
+                                    <button class="btn-small btn-danger" onclick="app.deleteUser(${user.id}, '${user.name}')">Delete</button>
+                                </div>
+                            `;
+                            userList.appendChild(userItem);
+                        });
+                    } else {
+                        userList.innerHTML = '<div class="loading-text">No users found. Please create an account first.</div>';
+                    }
+                } catch (error) {
+                    console.error('Failed to load users:', error);
+                    document.getElementById('userList').innerHTML = '<div class="loading-text error-text">Failed to load users</div>';
+                }
+            }
+            
+            async loginUser(userId) {
+                try {
+                    const response = await fetch('http://localhost:8000/api/user/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ user_id: userId })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.currentUserId = data.user_id;
+                        this.currentUserName = data.name;
+                        
+                        this.userAvatar.textContent = data.name.charAt(0).toUpperCase();
+                        this.userName.textContent = data.name;
+                        this.userStatus.textContent = 'Connected';
+                        
+                        this.loginBtn.classList.add('hidden');
+                        this.registerBtn.classList.add('hidden');
+                        this.logoutBtn.classList.remove('hidden');
+                        
+                        this.updateStatus('disconnected', 'Ready to Connect');
+                        this.addMessage('system', `Welcome back, ${data.name}! Click "Connect Service" to start.`);
+                        
+                        this.closeLoginModal();
+                    }
+                } catch (error) {
+                    console.error('Login failed:', error);
+                    alert('Login failed: ' + error.message);
+                }
+            }
+            
+            async submitRegister() {
+                const name = document.getElementById('regName').value.trim();
+                if (!name) {
+                    alert('Please enter your name');
+                    return;
+                }
+                
+                const age = document.getElementById('regAge').value;
+                const conditions = document.getElementById('regConditions').value;
+                const contact = document.getElementById('regContact').value;
+                
+                const healthConditions = conditions ? conditions.split(',').map(s => s.trim()) : [];
+                
+                try {
+                    const response = await fetch('http://localhost:8000/api/user/register', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: name,
+                            age: age ? parseInt(age) : null,
+                            health_conditions: healthConditions.length > 0 ? healthConditions : null,
+                            emergency_contact: contact || null
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        alert(`Account created successfully! Welcome, ${name}!`);
+                        this.closeRegisterModal();
+                        await this.loginUser(data.user_id);
+                    }
+                } catch (error) {
+                    console.error('Registration failed:', error);
+                    alert('Registration failed: ' + error.message);
+                }
+            }
+            
+            async deleteUser(userId, userName) {
+                if (!confirm(`Are you sure you want to delete user "${userName}"? This will permanently remove all their data including medications, health records, and reminders.`)) {
+                    return;
+                }
+                
+                try {
+                    const response = await fetch(`http://localhost:8000/api/user/${userId}`, {
+                        method: 'DELETE'
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        alert(`User "${userName}" deleted successfully!`);
+                        this.loadUsers(); // 重新加载用户列表
+                    } else {
+                        alert('Failed to delete user: ' + data.message);
+                    }
+                } catch (error) {
+                    console.error('Delete user failed:', error);
+                    alert('Delete user failed: ' + error.message);
+                }
+            }
+            
+            async clearAllUsers() {
+                if (!confirm('Are you sure you want to delete ALL users? This will permanently remove all user data including medications, health records, and reminders. This action cannot be undone!')) {
+                    return;
+                }
+                
+                if (!confirm('This is your final warning! All data will be lost. Are you absolutely sure?')) {
+                    return;
+                }
+                
+                try {
+                    const response = await fetch('http://localhost:8000/api/user/clear-all', {
+                        method: 'DELETE'
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        alert('All users and data cleared successfully!');
+                        this.loadUsers(); // 重新加载用户列表
+                    } else {
+                        alert('Failed to clear all users: ' + data.message);
+                    }
+                } catch (error) {
+                    console.error('Clear all users failed:', error);
+                    alert('Clear all users failed: ' + error.message);
+                }
+            }
+        }
+        
+        // 确保DOM加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing app...');
+            
+            // 初始化应用
+            const app = new HealthAssistantApp();
+            
+            // 全局函数供HTML调用
+            window.app = app;
+            
+            console.log('App initialized and ready');
+        });
+    </script>
+</body>
+</html>
