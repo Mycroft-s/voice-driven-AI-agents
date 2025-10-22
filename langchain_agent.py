@@ -170,22 +170,22 @@ class LangChainHealthAssistant:
             # Build input with user ID information and instructions
             enhanced_input = f"""User ID: {self.current_user_id}
 
-User input: {user_input}
+            User input: {user_input}
 
-Processing steps:
-1. Analyze user intent, determine which tool to use
-2. Extract required parameters from user input
-3. Call tool after ensuring parameter format is correct
-4. Generate friendly response
+            Processing steps:
+            1. Analyze user intent, determine which tool to use
+            2. Extract required parameters from user input
+            3. Call tool after ensuring parameter format is correct
+            4. Generate friendly response
 
-Time conversion reference:
-- "8am" or "morning 8" → ["08:00"]
-- "8pm" or "evening 8" → ["20:00"]
-- "8am and 8pm" → ["08:00", "20:00"]
-- "noon daily" → ["12:00"]
+            Time conversion reference:
+            - "8am" or "morning 8" → ["08:00"]
+            - "8pm" or "evening 8" → ["20:00"]
+            - "8am and 8pm" → ["08:00", "20:00"]
+            - "noon daily" → ["12:00"]
 
-If user doesn't provide dosage information, use "as prescribed" as default value.
-"""
+            If user doesn't provide dosage information, use "as prescribed" as default value.
+            """
             
             # Use Agent executor to process input
             result = await self.agent_executor.ainvoke({
