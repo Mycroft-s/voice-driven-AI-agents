@@ -59,9 +59,9 @@ class ExternalAPIManager:
             return {
                 "city": original_city,
                 "temperature": 22,
-                "description": "晴天",
+                "description": "Sunny",
                 "humidity": 65,
-                "health_advice": "天气晴朗，适合户外活动，注意防晒"
+                "health_advice": "The weather is clear and sunny, perfect for outdoor activities. Remember to apply sunscreen."
             }
         
         try:
@@ -94,9 +94,9 @@ class ExternalAPIManager:
             return {
                 "city": original_city,  # Use original city name
                 "temperature": 20,
-                "description": "未知",
+                "description": "Unknown",
                 "humidity": 50,
-                "health_advice": "请关注天气变化，注意身体健康"
+                "health_advice": "Please pay attention to weather changes and take care of your health."
             }
     
     def _generate_weather_health_advice(self, weather_data: Dict[str, Any]) -> str:
@@ -109,27 +109,27 @@ class ExternalAPIManager:
         
         # Temperature advice
         if temp < 5:
-            advice_parts.append("天气寒冷，请注意保暖，特别是老年人要预防感冒")
+            advice_parts.append("It's very cold outside. Please keep warm, especially elderly people should prevent colds.")
         elif temp > 30:
-            advice_parts.append("天气炎热，请多喝水，避免中暑")
+            advice_parts.append("It's very hot outside. Please drink more water and avoid heatstroke.")
         elif 15 <= temp <= 25:
-            advice_parts.append("温度适宜，适合户外活动")
+            advice_parts.append("The temperature is comfortable, perfect for outdoor activities.")
         
         # Humidity advice
         if humidity > 80:
-            advice_parts.append("湿度较高，注意关节保养")
+            advice_parts.append("High humidity detected. Please take care of your joints.")
         elif humidity < 30:
-            advice_parts.append("空气干燥，多补充水分")
+            advice_parts.append("The air is dry. Please drink more water to stay hydrated.")
         
         # Weather condition advice
-        if "雨" in description:
-            advice_parts.append("雨天路滑，外出请注意安全")
-        elif "雾" in description:
-            advice_parts.append("有雾霾，建议减少户外活动")
-        elif "晴" in description:
-            advice_parts.append("阳光充足，适合晒太阳补充维生素D")
+        if "rain" in description.lower():
+            advice_parts.append("It's raining. Please be careful when going out as roads may be slippery.")
+        elif "fog" in description.lower() or "haze" in description.lower():
+            advice_parts.append("There's fog or haze. It's recommended to reduce outdoor activities.")
+        elif "sunny" in description.lower() or "clear" in description.lower():
+            advice_parts.append("Sunny weather with plenty of sunshine. Great for getting vitamin D.")
         
-        return "；".join(advice_parts) if advice_parts else "天气变化，请注意身体健康"
+        return "; ".join(advice_parts) if advice_parts else "Weather changes detected. Please take care of your health."
     
     async def create_calendar_event(self, title: str, start_time: str, 
                                   duration_minutes: int = 60, description: str = "") -> Dict[str, Any]:
@@ -163,15 +163,15 @@ class ExternalAPIManager:
             events = [
                 {
                     "id": "event_1",
-                    "title": "医生预约 - 心内科",
+                    "title": "Doctor Appointment - Cardiology",
                     "start_time": (datetime.now() + timedelta(days=2)).isoformat(),
-                    "description": "定期检查血压和心脏健康"
+                    "description": "Regular blood pressure and heart health checkup"
                 },
                 {
                     "id": "event_2", 
-                    "title": "服药提醒",
+                    "title": "Medication Reminder",
                     "start_time": (datetime.now() + timedelta(hours=2)).isoformat(),
-                    "description": "降压药 - 每天一次"
+                    "description": "Blood pressure medication - once daily"
                 }
             ]
             
@@ -209,33 +209,33 @@ class ExternalAPIManager:
             # Age-based advice
             if user_age >= 65:
                 tips.extend([
-                    "每天进行适量运动，如散步30分钟",
-                    "保持充足睡眠，建议7-8小时",
-                    "定期体检，关注血压、血糖等指标",
-                    "保持社交活动，与家人朋友多交流"
+                    "Engage in moderate exercise daily, such as walking for 30 minutes",
+                    "Get adequate sleep, recommended 7-8 hours",
+                    "Have regular health checkups, monitor blood pressure and blood sugar",
+                    "Maintain social activities and communicate with family and friends"
                 ])
             
             # Health condition-based advice
             if conditions:
-                if "高血压" in conditions:
+                if "hypertension" in conditions or "high blood pressure" in conditions:
                     tips.extend([
-                        "低盐饮食，每日盐摄入量不超过6克",
-                        "定期监测血压，按时服药",
-                        "避免情绪激动，保持心情平静"
+                        "Follow a low-salt diet, limit daily salt intake to no more than 6 grams",
+                        "Monitor blood pressure regularly and take medication on time",
+                        "Avoid emotional stress and maintain a calm mood"
                     ])
                 
-                if "糖尿病" in conditions:
+                if "diabetes" in conditions:
                     tips.extend([
-                        "控制饮食，少食多餐",
-                        "定期监测血糖",
-                        "注意足部护理，预防并发症"
+                        "Control your diet with small, frequent meals",
+                        "Monitor blood sugar regularly",
+                        "Take care of your feet to prevent complications"
                     ])
             
             # General advice
             tips.extend([
-                "多喝水，保持身体水分平衡",
-                "多吃蔬菜水果，保持营养均衡",
-                "避免吸烟和过量饮酒"
+                "Drink plenty of water to maintain body fluid balance",
+                "Eat more vegetables and fruits for balanced nutrition",
+                "Avoid smoking and excessive alcohol consumption"
             ])
             
             logger.info(f"Generated health advice: {len(tips)} tips")
@@ -243,25 +243,25 @@ class ExternalAPIManager:
             
         except Exception as e:
             logger.error(f"Failed to get health advice: {e}")
-            return ["保持健康的生活方式，定期体检"]
+            return ["Maintain a healthy lifestyle and have regular health checkups"]
     
     async def test_apis(self) -> Dict[str, Any]:
         """Test all API functionality"""
         results = {}
         
         # Test weather API
-        weather = await self.get_weather_info("北京")
+        weather = await self.get_weather_info("Beijing")
         results["weather"] = weather
         
         # Test calendar API
         event = await self.create_calendar_event(
-            "测试事件", 
+            "Test Event", 
             (datetime.now() + timedelta(hours=1)).isoformat()
         )
         results["calendar"] = event
         
         # Test health advice
-        tips = await self.get_health_tips(75, ["高血压"])
+        tips = await self.get_health_tips(75, ["hypertension"])
         results["health_tips"] = tips
         
         logger.info("API functionality test completed")

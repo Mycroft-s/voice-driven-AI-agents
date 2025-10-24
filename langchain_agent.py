@@ -218,8 +218,8 @@ class LangChainHealthAssistant:
     async def process_voice_input(self) -> Dict[str, Any]:
         """Process voice input"""
         try:
-            # Listen to voice input
-            user_input = voice_processor.listen(timeout=10, phrase_time_limit=5)
+            # Listen to voice input with simple method to avoid hanging
+            user_input = voice_processor.listen_simple(timeout=15)
             
             if not user_input:
                 return {
@@ -267,8 +267,16 @@ class LangChainHealthAssistant:
     async def setup_user_profile(self, name: str, age: int, 
                                health_conditions: List[str] = None,
                                emergency_contact: str = None) -> int:
-        """Set up user profile"""
+        """Set up user profile - only creates if doesn't exist"""
         try:
+            # 检查是否已存在相同名称的用户
+            existing_user = self.data_manager.get_user_by_name(name)
+            if existing_user:
+                self.current_user_id = existing_user['id']
+                logger.info(f"Found existing user: {name}, ID: {existing_user['id']}")
+                return existing_user['id']
+            
+            # 如果不存在，创建新用户
             user_id = self.data_manager.add_user(
                 name, age, health_conditions, emergency_contact
             )
@@ -353,6 +361,42 @@ class LangChainHealthAssistant:
     async def test_workflow(self) -> Dict[str, Any]:
         """Test LangGraph workflow"""
         return await self.workflow.test_workflow()
+    
+    async def generate_chat_title(self, first_message: str) -> str:
+        """Generate chat title based on first user message using LLM"""
+        try:
+            logger.info(f"Generating chat title for message: {first_message[:50]}...")
+            
+            # Create a simple prompt for title generation
+            title_prompt = f"""
+            Based on the following user message, generate a concise and descriptive title for a health assistant conversation.
+            The title should be 2-6 words maximum and capture the main topic or intent.
+            
+            User message: "{first_message}"
+            
+            Generate a title:
+            """
+            
+            # Use LLM to generate title
+            response = await self.llm.ainvoke(title_prompt)
+            title = response.content.strip()
+            
+            # Clean up the title
+            title = title.replace('"', '').replace("'", '').strip()
+            
+            # Ensure title is not too long
+            if len(title) > 30:
+                words = title.split()[:4]
+                title = ' '.join(words) + '...'
+            
+            logger.info(f"Generated chat title: {title}")
+            return title
+            
+        except Exception as e:
+            logger.error(f"Failed to generate chat title: {e}")
+            # Fallback to simple title generation
+            words = first_message.split()[:3]
+            return ' '.join(words) + ('...' if len(first_message.split()) > 3 else '')
     
     def stop_conversation(self):
         """Stop conversation"""

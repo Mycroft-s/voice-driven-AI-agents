@@ -8,7 +8,7 @@ import pyttsx3
 import threading
 import queue
 import logging
-from typing import Optional, Callable
+from typing import Optional, Callable, Dict, Any
 import time
 
 logger = logging.getLogger(__name__)
@@ -24,6 +24,11 @@ class VoiceProcessor:
         # Initialize speech recognition
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
+        
+        # Configure recognizer for better speech detection
+        self.recognizer.pause_threshold = 1.0  # Wait 1 second of silence before considering speech ended
+        self.recognizer.energy_threshold = 200  # Lower energy threshold for quieter speech
+        self.recognizer.dynamic_energy_threshold = True  # Adjust threshold based on ambient noise
         
         # Initialize speech synthesis
         self.tts_engine = pyttsx3.init()
@@ -65,13 +70,24 @@ class VoiceProcessor:
                 self.recognizer.adjust_for_ambient_noise(source, duration=1)
                 
                 logger.info("Please start speaking...")
-                audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)
+                
+                # Add timeout protection for listen
+                try:
+                    audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)
+                except Exception as listen_error:
+                    logger.error(f"Error during listen: {listen_error}")
+                    return None
                 
                 logger.info("Recognizing speech...")
-                text = self.recognizer.recognize_google(audio, language=self.language)
                 
-                logger.info(f"Recognition result: {text}")
-                return text
+                # Add timeout protection for recognition
+                try:
+                    text = self.recognizer.recognize_google(audio, language=self.language)
+                    logger.info(f"Recognition result: {text}")
+                    return text
+                except Exception as recognition_error:
+                    logger.error(f"Error during recognition: {recognition_error}")
+                    return None
                 
         except sr.WaitTimeoutError:
             logger.warning("Voice input timeout")
@@ -85,6 +101,101 @@ class VoiceProcessor:
         except Exception as e:
             logger.error(f"Speech recognition exception: {e}")
             return None
+    
+    def listen_with_longer_pauses(self, timeout: int = 5, phrase_time_limit: int = 3) -> Optional[str]:
+        """
+        Listen to voice input with longer pause tolerance for non-fluent speech
+        
+        Args:
+            timeout: Timeout in seconds
+            phrase_time_limit: Phrase time limit in seconds
+            
+        Returns:
+            Converted text or None
+        """
+        try:
+            with self.microphone as source:
+                logger.info("Adjusting for ambient noise...")
+                self.recognizer.adjust_for_ambient_noise(source, duration=1)
+                
+                # Configure for longer pauses (for non-fluent speech)
+                original_pause_threshold = self.recognizer.pause_threshold
+                self.recognizer.pause_threshold = 0.8  # Wait 0.8 seconds of silence
+                
+                logger.info("Please start speaking (with longer pause tolerance)...")
+                
+                # Add timeout protection for listen
+                try:
+                    audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)
+                except Exception as listen_error:
+                    logger.error(f"Error during listen: {listen_error}")
+                    self.recognizer.pause_threshold = original_pause_threshold
+                    return None
+                
+                # Restore original pause threshold
+                self.recognizer.pause_threshold = original_pause_threshold
+                
+                logger.info("Recognizing speech...")
+                
+                # Add timeout protection for recognition
+                try:
+                    text = self.recognizer.recognize_google(audio, language=self.language)
+                    logger.info(f"Recognition result: {text}")
+                    return text
+                except Exception as recognition_error:
+                    logger.error(f"Error during recognition: {recognition_error}")
+                    return None
+                
+        except sr.WaitTimeoutError:
+            logger.warning("Voice input timeout")
+            return None
+        except sr.UnknownValueError:
+            logger.warning("Could not understand speech")
+            return None
+        except sr.RequestError as e:
+            logger.error(f"Speech recognition service error: {e}")
+            return None
+        except Exception as e:
+            logger.error(f"Speech recognition exception: {e}")
+            return None
+    
+    def listen_simple(self, timeout: int = 5) -> Optional[str]:
+        """
+        Simple voice input with minimal configuration to avoid hanging
+        
+        Args:
+            timeout: Timeout in seconds
+            
+        Returns:
+            Converted text or None
+        """
+        try:
+            with self.microphone as source:
+                logger.info("Simple voice input - adjusting for ambient noise...")
+                self.recognizer.adjust_for_ambient_noise(source, duration=0.5)
+                
+                logger.info("Please speak now...")
+                
+                # Use minimal configuration
+                audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=10)
+                
+                logger.info("Processing speech...")
+                text = self.recognizer.recognize_google(audio, language=self.language)
+                
+                logger.info(f"Simple recognition result: {text}")
+                return text
+                
+        except Exception as e:
+            logger.error(f"Simple voice recognition failed: {e}")
+            return None
+    
+    def get_recognition_settings(self) -> Dict[str, Any]:
+        return {
+            "pause_threshold": self.recognizer.pause_threshold,
+            "energy_threshold": self.recognizer.energy_threshold,
+            "dynamic_energy_threshold": self.recognizer.dynamic_energy_threshold,
+            "language": self.language
+        }
     
     def speak(self, text: str, blocking: bool = False):
         """

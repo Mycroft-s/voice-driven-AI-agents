@@ -159,6 +159,7 @@ async def register_user(user_data: dict):
     try:
         # 从JSON数据中提取字段
         name = user_data.get('name')
+        email = user_data.get('email')
         age = user_data.get('age')
         health_conditions = user_data.get('health_conditions')
         emergency_contact = user_data.get('emergency_contact')
@@ -168,6 +169,7 @@ async def register_user(user_data: dict):
         
         user_id = langchain_health_assistant.data_manager.add_user(
             name=name,
+            email=email,
             age=age,
             health_conditions=health_conditions,
             emergency_contact=emergency_contact
@@ -193,13 +195,14 @@ async def list_users():
         connection = sqlite3.connect(conn)
         cursor = connection.cursor()
         
-        cursor.execute('SELECT id, name, age FROM users ORDER BY id')
+        cursor.execute('SELECT id, name, email, age FROM users ORDER BY id')
         users = []
         for row in cursor.fetchall():
             users.append({
                 'id': row[0],
                 'name': row[1],
-                'age': row[2]
+                'email': row[2],
+                'age': row[3]
             })
         
         connection.close()
@@ -485,6 +488,41 @@ async def get_workflow_graph():
         logger.error(f"Failed to get workflow graph: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/api/chat/generate-title")
+async def generate_chat_title(request: Dict[str, Any]):
+    """Generate chat title using LLM"""
+    try:
+        if not langchain_health_assistant:
+            return JSONResponse(
+                status_code=503,
+                content={"success": False, "message": "LangChain health assistant not initialized"}
+            )
+        
+        message = request.get("message", "")
+        chat_id = request.get("chat_id", "")
+        
+        if not message:
+            return JSONResponse(
+                status_code=400,
+                content={"success": False, "message": "Message is required"}
+            )
+        
+        # Generate title using LLM
+        title = await langchain_health_assistant.generate_chat_title(message)
+        
+        return JSONResponse(content={
+            "success": True,
+            "title": title,
+            "chat_id": chat_id
+        })
+        
+    except Exception as e:
+        logger.error(f"Failed to generate chat title: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"success": False, "message": f"Failed to generate chat title: {str(e)}"}
+        )
+
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     """WebSocket endpoint - Real-time voice interaction"""
@@ -611,12 +649,233 @@ async def startup_event():
                 time_slots=["08:00"]
             )
             
-            logger.info("Demo user profile created")
+            logger.info("Demo user profile created with sample data")
         else:
-            logger.info(f"Found existing user: {demo_user['name']}")
+            logger.info(f"Found existing demo user: {demo_user['name']}")
+            
+            # Check if demo user has medications, if not add sample ones
+            medications = langchain_health_assistant.data_manager.get_user_medications(1)
+            if not medications:
+                logger.info("Demo user has no medications, adding sample medication")
+                await langchain_health_assistant.add_medication(
+                    name="Blood Pressure Medication",
+                    dosage="5mg",
+                    frequency="Once daily",
+                    time_slots=["08:00"]
+                )
+            else:
+                logger.info(f"Demo user already has {len(medications)} medications")
+        
+        # Ensure Guest user (ID=0) exists for frontend
+        guest_user = langchain_health_assistant.data_manager.get_user_profile(0)
+        if not guest_user:
+            # Create Guest user
+            langchain_health_assistant.data_manager.add_user(
+                name="Guest",
+                age=None,
+                health_conditions=[],
+                emergency_contact=None
+            )
+            logger.info("Guest user created")
+        else:
+            logger.info("Guest user already exists")
         
     except Exception as e:
         logger.error(f"Failed to initialize demo data: {e}")
+
+# Chat conversation management APIs
+@app.post("/api/chat/conversations")
+async def create_chat_conversation(request: Dict[str, Any]):
+    """Create a new chat conversation"""
+    try:
+        if not langchain_health_assistant:
+            return JSONResponse(
+                status_code=503,
+                content={"success": False, "message": "LangChain health assistant not initialized"}
+            )
+        
+        chat_id = request.get("chat_id")
+        title = request.get("title", "New Chat")
+        user_id = request.get("user_id") or langchain_health_assistant.current_user_id
+        
+        if not chat_id:
+            return JSONResponse(
+                status_code=400,
+                content={"success": False, "message": "chat_id is required"}
+            )
+        
+        # Create conversation in database
+        conversation_id = langchain_health_assistant.data_manager.create_chat_conversation(
+            user_id, chat_id, title
+        )
+        
+        return JSONResponse(content={
+            "success": True,
+            "conversation_id": conversation_id,
+            "message": "Chat conversation created successfully"
+        })
+        
+    except Exception as e:
+        logger.error(f"Failed to create chat conversation: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"success": False, "message": f"Failed to create chat conversation: {str(e)}"}
+        )
+
+@app.get("/api/chat/conversations")
+async def get_chat_conversations(user_id: int = None):
+    """Get all chat conversations for current user"""
+    try:
+        if not langchain_health_assistant:
+            return JSONResponse(
+                status_code=503,
+                content={"success": False, "message": "LangChain health assistant not initialized"}
+            )
+        
+        # 使用传入的user_id或当前用户ID
+        target_user_id = user_id if user_id is not None else langchain_health_assistant.current_user_id
+        conversations = langchain_health_assistant.data_manager.get_chat_conversations(target_user_id)
+        
+        return JSONResponse(content={
+            "success": True,
+            "conversations": conversations
+        })
+        
+    except Exception as e:
+        logger.error(f"Failed to get chat conversations: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"success": False, "message": f"Failed to get chat conversations: {str(e)}"}
+        )
+
+@app.get("/api/chat/conversations/{chat_id}/messages")
+async def get_chat_messages(chat_id: str):
+    """Get all messages for a chat conversation"""
+    try:
+        if not langchain_health_assistant:
+            return JSONResponse(
+                status_code=503,
+                content={"success": False, "message": "LangChain health assistant not initialized"}
+            )
+        
+        messages = langchain_health_assistant.data_manager.get_chat_messages(chat_id)
+        
+        return JSONResponse(content={
+            "success": True,
+            "messages": messages
+        })
+        
+    except Exception as e:
+        logger.error(f"Failed to get chat messages: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"success": False, "message": f"Failed to get chat messages: {str(e)}"}
+        )
+
+@app.post("/api/chat/conversations/{chat_id}/messages")
+async def add_chat_message(chat_id: str, request: Dict[str, Any]):
+    """Add a message to a chat conversation"""
+    try:
+        if not langchain_health_assistant:
+            return JSONResponse(
+                status_code=503,
+                content={"success": False, "message": "LangChain health assistant not initialized"}
+            )
+        
+        message_type = request.get("type")
+        content = request.get("content")
+        user_id = request.get("user_id") or langchain_health_assistant.current_user_id
+        
+        if not message_type or not content:
+            return JSONResponse(
+                status_code=400,
+                content={"success": False, "message": "type and content are required"}
+            )
+        
+        message_id = langchain_health_assistant.data_manager.add_chat_message(
+            chat_id, message_type, content
+        )
+        
+        return JSONResponse(content={
+            "success": True,
+            "message_id": message_id,
+            "message": "Message added successfully"
+        })
+        
+    except Exception as e:
+        logger.error(f"Failed to add chat message: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"success": False, "message": f"Failed to add chat message: {str(e)}"}
+        )
+
+@app.put("/api/chat/conversations/{chat_id}/title")
+async def update_chat_title(chat_id: str, request: Dict[str, Any]):
+    """Update chat conversation title"""
+    try:
+        if not langchain_health_assistant:
+            return JSONResponse(
+                status_code=503,
+                content={"success": False, "message": "LangChain health assistant not initialized"}
+            )
+        
+        new_title = request.get("title")
+        
+        if not new_title:
+            return JSONResponse(
+                status_code=400,
+                content={"success": False, "message": "title is required"}
+            )
+        
+        updated = langchain_health_assistant.data_manager.update_chat_title(chat_id, new_title)
+        
+        if updated:
+            return JSONResponse(content={
+                "success": True,
+                "message": "Chat title updated successfully"
+            })
+        else:
+            return JSONResponse(
+                status_code=404,
+                content={"success": False, "message": "Chat conversation not found"}
+            )
+        
+    except Exception as e:
+        logger.error(f"Failed to update chat title: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"success": False, "message": f"Failed to update chat title: {str(e)}"}
+        )
+
+@app.delete("/api/chat/conversations/{chat_id}")
+async def delete_chat_conversation(chat_id: str):
+    """Delete a chat conversation"""
+    try:
+        if not langchain_health_assistant:
+            return JSONResponse(
+                status_code=503,
+                content={"success": False, "message": "LangChain health assistant not initialized"}
+            )
+        
+        deleted = langchain_health_assistant.data_manager.delete_chat_conversation(chat_id)
+        
+        if deleted:
+            return JSONResponse(content={
+                "success": True,
+                "message": "Chat conversation deleted successfully"
+            })
+        else:
+            return JSONResponse(
+                status_code=404,
+                content={"success": False, "message": "Chat conversation not found"}
+            )
+        
+    except Exception as e:
+        logger.error(f"Failed to delete chat conversation: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"success": False, "message": f"Failed to delete chat conversation: {str(e)}"}
+        )
 
 @app.on_event("shutdown")
 async def shutdown_event():
