@@ -63,3 +63,10 @@ Thumbs.db
 # 临时文件
 *.tmp
 *.temp
+
+# Gmail API 敏感文件
+gmail_credentials.json
+gmail_token.json
+*.json
+!requirements.json
+!package.json
