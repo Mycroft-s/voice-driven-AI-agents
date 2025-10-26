@@ -14,20 +14,20 @@ from functools import wraps
 logger = logging.getLogger(__name__)
 
 class RedisCacheManager:
-    """Redis缓存管理器 - 多级缓存策略"""
+    """Redis Cache Manager - Multi-level cache strategy"""
     
     def __init__(self, host: str = "localhost", port: int = 6379, 
                  db: int = 0, password: str = None, 
                  decode_responses: bool = True):
         """
-        初始化Redis连接
+        Initialize Redis connection
         
         Args:
-            host: Redis服务器地址
-            port: Redis服务器端口
-            db: 数据库编号
-            password: 密码
-            decode_responses: 是否自动解码响应
+            host: Redis server address
+            port: Redis server port
+            db: Database number
+            password: Redis password
+            decode_responses: Whether to auto-decode responses
         """
         try:
             self.client = redis.Redis(
@@ -48,16 +48,16 @@ class RedisCacheManager:
             self.connected = False
     
     def _generate_key(self, prefix: str, *args) -> str:
-        """生成缓存键"""
+        """Generate cache key"""
         parts = [prefix] + [str(arg) for arg in args if arg is not None]
         return ":".join(parts)
     
     def _hash_query(self, query: str) -> str:
-        """生成查询哈希（用于模糊匹配）"""
+        """Generate query hash (for fuzzy matching)"""
         return hashlib.md5(query.encode()).hexdigest()
     
     def get(self, key: str) -> Optional[Any]:
-        """获取缓存值"""
+        """Get cache value"""
         if not self.connected or not self.client:
             return None
         
@@ -71,7 +71,7 @@ class RedisCacheManager:
         return None
     
     def set(self, key: str, value: Any, ttl: int = 3600) -> bool:
-        """设置缓存值"""
+        """Set cache value"""
         if not self.connected or not self.client:
             return False
         
@@ -83,7 +83,7 @@ class RedisCacheManager:
             return False
     
     def delete(self, *keys: str) -> int:
-        """删除缓存键"""
+        """Delete cache keys"""
         if not self.connected or not self.client:
             return 0
         
@@ -94,7 +94,7 @@ class RedisCacheManager:
             return 0
     
     def increment(self, key: str, amount: int = 1) -> int:
-        """递增计数器"""
+        """Increment counter"""
         if not self.connected or not self.client:
             return 0
         
@@ -105,7 +105,7 @@ class RedisCacheManager:
             return 0
     
     def exists(self, key: str) -> bool:
-        """检查键是否存在"""
+        """Check if key exists"""
         if not self.connected or not self.client:
             return False
         
@@ -115,25 +115,25 @@ class RedisCacheManager:
             logger.error(f"Failed to check cache key {key}: {e}")
             return False
     
-    # ==================== 用户数据缓存 ====================
+    # ==================== User Data Cache ====================
     
     def cache_user_profile(self, user_id: int, profile: Dict[str, Any], ttl: int = 7200):
-        """缓存用户资料"""
+        """Cache user profile"""
         key = self._generate_key("user:profile", user_id)
         return self.set(key, profile, ttl)
     
     def get_user_profile(self, user_id: int) -> Optional[Dict[str, Any]]:
-        """获取缓存的用户资料"""
+        """Get cached user profile"""
         key = self._generate_key("user:profile", user_id)
         return self.get(key)
     
     def invalidate_user_cache(self, user_id: int):
-        """失效用户相关的所有缓存"""
+        """Invalidate all cache related to user"""
         if not self.connected or not self.client:
             return
         
         try:
-            # 获取所有用户相关的键
+            # Get all user-related keys
             pattern = f"user:{user_id}:*"
             keys = self.client.keys(pattern)
             
@@ -144,32 +144,32 @@ class RedisCacheManager:
             logger.error(f"Failed to invalidate user cache: {e}")
     
     def cache_user_medications(self, user_id: int, medications: List[Dict[str, Any]], ttl: int = 3600):
-        """缓存用户药物信息"""
+        """Cache user medications"""
         key = self._generate_key("user:medications", user_id)
         return self.set(key, medications, ttl)
     
     def get_user_medications(self, user_id: int) -> Optional[List[Dict[str, Any]]]:
-        """获取缓存的用户药物信息"""
+        """Get cached user medications"""
         key = self._generate_key("user:medications", user_id)
         return self.get(key)
     
     def cache_user_reminders(self, user_id: int, reminders: List[Dict[str, Any]], ttl: int = 1800):
-        """缓存用户提醒（TTL较短，因为提醒经常变化）"""
+        """Cache user reminders (shorter TTL, as reminders change frequently)"""
         key = self._generate_key("user:reminders", user_id)
         return self.set(key, reminders, ttl)
     
     def get_user_reminders(self, user_id: int) -> Optional[List[Dict[str, Any]]]:
-        """获取缓存的用户提醒"""
+        """Get cached user reminders"""
         key = self._generate_key("user:reminders", user_id)
         return self.get(key)
     
-    # ==================== 对话缓存（高频优化） ====================
+    # ==================== Conversation Cache (High-frequency Optimization) ====================
     
     def cache_conversation(self, query: str, response: str, ttl: int = 1800):
         """
-        缓存对话响应
+        Cache conversation response
         
-        对于常见问题（如"我的用药是什么"），直接返回缓存
+        For common questions (e.g., "What are my medications?"), return cached response directly
         """
         query_hash = self._hash_query(query)
         key = self._generate_key("conversation:response", query_hash)
@@ -183,7 +183,7 @@ class RedisCacheManager:
         return self.set(key, cache_data, ttl)
     
     def get_conversation_cache(self, query: str) -> Optional[str]:
-        """获取缓存的对话响应"""
+        """Get cached conversation response"""
         query_hash = self._hash_query(query)
         key = self._generate_key("conversation:response", query_hash)
         
@@ -195,23 +195,23 @@ class RedisCacheManager:
     
     def cache_similar_query(self, original_query: str, similar_query: str, response: str):
         """
-        缓存相似查询的响应
+        Cache similar query response
         
-        用于处理语义相似但措辞不同的查询
+        Used to handle semantically similar but differently worded queries
         """
         original_hash = self._hash_query(original_query)
         similar_hash = self._hash_query(similar_query)
         
-        # 记录相似查询映射
+        # Record similar query mapping
         mapping_key = self._generate_key("conversation:similar", similar_hash)
         self.set(mapping_key, original_hash, ttl=86400)
         
-        # 缓存响应（使用原始查询的哈希）
+        # Cache response (using original query hash)
         cache_key = self._generate_key("conversation:response", original_hash)
-        return self.get(cache_key)  # 如果原始查询已被缓存，则不需要重新缓存
+        return self.get(cache_key)  # No need to re-cache if original query is already cached
     
     def get_similar_conversation(self, query: str) -> Optional[str]:
-        """获取相似查询的缓存响应"""
+        """Get cached response for similar query"""
         query_hash = self._hash_query(query)
         mapping_key = self._generate_key("conversation:similar", query_hash)
         
@@ -224,39 +224,39 @@ class RedisCacheManager:
         
         return None
     
-    # ==================== 聊天历史缓存 ====================
+    # ==================== Chat History Cache ====================
     
     def cache_chat_messages(self, chat_id: str, messages: List[Dict[str, Any]], ttl: int = 3600):
-        """缓存聊天消息"""
+        """Cache chat messages"""
         key = self._generate_key("chat:messages", chat_id)
         return self.set(key, messages, ttl)
     
     def get_chat_messages(self, chat_id: str) -> Optional[List[Dict[str, Any]]]:
-        """获取缓存的聊天消息"""
+        """Get cached chat messages"""
         key = self._generate_key("chat:messages", chat_id)
         return self.get(key)
     
     def cache_chat_title(self, chat_id: str, title: str, ttl: int = 86400):
-        """缓存聊天标题"""
+        """Cache chat title"""
         key = self._generate_key("chat:title", chat_id)
         return self.set(key, title, ttl)
     
     def get_chat_title(self, chat_id: str) -> Optional[str]:
-        """获取缓存的聊天标题"""
+        """Get cached chat title"""
         key = self._generate_key("chat:title", chat_id)
         return self.get(key)
     
-    # ==================== 统计与分析 ====================
+    # ==================== Statistics & Analysis ====================
     
     def track_query_frequency(self, query: str) -> int:
-        """追踪查询频率"""
+        """Track query frequency"""
         query_hash = self._hash_query(query)
         key = self._generate_key("stats:query_frequency", query_hash)
         
-        # 记录查询
+        # Record query
         frequency = self.increment(key, 1)
         
-        # 设置过期时间（24小时）
+        # Set expiration (24 hours)
         if self.connected and self.client:
             try:
                 self.client.expire(key, 86400)
@@ -266,7 +266,7 @@ class RedisCacheManager:
         return frequency
     
     def get_query_frequency(self, query: str) -> int:
-        """获取查询频率"""
+        """Get query frequency"""
         query_hash = self._hash_query(query)
         key = self._generate_key("stats:query_frequency", query_hash)
         
@@ -274,25 +274,25 @@ class RedisCacheManager:
         return int(value) if value else 0
     
     def get_top_queries(self, limit: int = 10) -> List[Dict[str, Any]]:
-        """获取高频查询（需要手动实现，因为需要遍历）"""
-        # 注意：生产环境应该使用Redis Sorted Set来实现
+        """Get top frequent queries (needs manual implementation, requires iteration)"""
+        # Note: Production environment should use Redis Sorted Set for this
         return []
     
-    # ==================== 缓存预热 ====================
+    # ==================== Cache Preloading ====================
     
     def preload_hot_data(self, user_id: int, data_types: List[str] = None):
-        """预热热点数据"""
+        """Preload hot data"""
         if data_types is None:
             data_types = ["medications", "reminders"]
         
-        # 这个函数通常在其他模块中调用
+        # This function is typically called from other modules
         logger.info(f"Preloading hot data for user {user_id}: {data_types}")
-        # 具体实现由调用方提供数据
+        # Specific implementation provided by caller
     
-    # ==================== 批量操作 ====================
+    # ==================== Batch Operations ====================
     
     def batch_get(self, keys: List[str]) -> Dict[str, Any]:
-        """批量获取缓存"""
+        """Batch get cache"""
         if not self.connected or not self.client:
             return {}
         
@@ -311,7 +311,7 @@ class RedisCacheManager:
             return {}
     
     def batch_set(self, data: Dict[str, Any], ttl: int = 3600):
-        """批量设置缓存"""
+        """Batch set cache"""
         if not self.connected or not self.client:
             return
         

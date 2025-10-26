@@ -21,7 +21,7 @@ class Config(BaseSettings):
     anthropic_api_key: str = ""
     
     # Voice configuration
-    voice_language: str = "zh-CN"
+    voice_language: str = "en-US"
     voice_rate: int = 150
     voice_volume: float = 0.8
     
