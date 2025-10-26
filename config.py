@@ -9,7 +9,7 @@ Technology Selection Notes:
 """
 
 import os
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, Union
 from pydantic_settings import BaseSettings
 import logging
 
@@ -27,6 +27,13 @@ class Config(BaseSettings):
     
     # Database configuration
     database_url: str = "sqlite:///health_assistant.db"
+    
+    # Redis configuration
+    redis_host: str = "localhost"
+    redis_port: int = 6379
+    redis_db: int = 0
+    redis_password: Optional[str] = None
+    redis_cache_enabled: bool = False  # 默认禁用，系统会自动降级到SQLite。启用后Redis不可用时也会自动降级
     
     # External API configuration
     weather_api_key: str = ""

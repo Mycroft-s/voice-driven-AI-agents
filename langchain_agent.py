@@ -28,7 +28,7 @@ class LangChainHealthAssistant:
     def __init__(self, openai_api_key: str):
         # Initialize LLM (lower temperature for better tool calling accuracy)
         self.llm = ChatOpenAI(
-            model="gpt-4",
+            model="gpt-4o",
             temperature=0,  # Use 0 for most deterministic output
             api_key=openai_api_key
         )

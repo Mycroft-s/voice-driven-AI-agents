@@ -9,14 +9,39 @@ import logging
 from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional
 
+from config import config
+from redis_cache import RedisCacheManager
+
 logger = logging.getLogger(__name__)
 
 class HealthDataManager:
-    """Health Data Manager"""
+    """Health Data Manager with Redis Cache Support"""
     
     def __init__(self, db_path: str = "health_assistant.db"):
         self.db_path = db_path
         self.init_database()
+        
+        # 初始化Redis缓存
+        self.cache = None
+        if config.redis_cache_enabled:
+            try:
+                self.cache = RedisCacheManager(
+                    host=config.redis_host,
+                    port=config.redis_port,
+                    db=config.redis_db,
+                    password=config.redis_password
+                )
+                if self.cache.connected:
+                    logger.info("Health data manager initialized with Redis cache")
+                else:
+                    logger.warning("Redis cache unavailable, using SQLite only")
+                    self.cache = None
+            except Exception as e:
+                logger.warning(f"Failed to initialize Redis cache: {e}")
+                self.cache = None
+        else:
+            logger.info("Health data manager initialized without Redis cache")
+        
         logger.info("Health data manager initialized successfully")
     
     def init_database(self):
@@ -238,7 +263,15 @@ class HealthDataManager:
         return reminder_id
     
     def get_user_medications(self, user_id: int) -> List[Dict[str, Any]]:
-        """Get user medication information"""
+        """Get user medication information with Redis cache"""
+        # 尝试从缓存获取
+        if self.cache and self.cache.connected:
+            cached = self.cache.get_user_medications(user_id)
+            if cached is not None:
+                logger.debug(f"Cache hit for user {user_id} medications")
+                return cached
+        
+        # 从数据库获取
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         
@@ -261,10 +294,24 @@ class HealthDataManager:
             })
         
         conn.close()
+        
+        # 写入缓存
+        if self.cache and self.cache.connected:
+            self.cache.cache_user_medications(user_id, medications, ttl=3600)
+            logger.debug(f"Cached medications for user {user_id}")
+        
         return medications
     
     def get_today_reminders(self, user_id: int) -> List[Dict[str, Any]]:
-        """Get today's reminders"""
+        """Get today's reminders with Redis cache"""
+        # 尝试从缓存获取
+        if self.cache and self.cache.connected:
+            cached = self.cache.get_user_reminders(user_id)
+            if cached is not None:
+                logger.debug(f"Cache hit for user {user_id} today's reminders")
+                return cached
+        
+        # 从数据库获取
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         
@@ -289,6 +336,12 @@ class HealthDataManager:
             })
         
         conn.close()
+        
+        # 写入缓存（TTL较短，因为提醒会实时变化）
+        if self.cache and self.cache.connected:
+            self.cache.cache_user_reminders(user_id, reminders, ttl=1800)
+            logger.debug(f"Cached reminders for user {user_id}")
+        
         return reminders
     
     def get_recent_health_records(self, user_id: int, days: int = 7) -> List[Dict[str, Any]]:
@@ -333,7 +386,15 @@ class HealthDataManager:
         logger.info(f"Completed reminder: {reminder_id}")
     
     def get_user_profile(self, user_id: int) -> Optional[Dict[str, Any]]:
-        """Get user profile"""
+        """Get user profile with Redis cache"""
+        # 尝试从缓存获取
+        if self.cache and self.cache.connected:
+            cached = self.cache.get_user_profile(user_id)
+            if cached is not None:
+                logger.debug(f"Cache hit for user {user_id} profile")
+                return cached
+        
+        # 从数据库获取
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         
@@ -351,6 +412,12 @@ class HealthDataManager:
                 'email': row[6]
             }
             conn.close()
+            
+            # 写入缓存
+            if self.cache and self.cache.connected:
+                self.cache.cache_user_profile(user_id, profile, ttl=7200)
+                logger.debug(f"Cached profile for user {user_id}")
+            
             return profile
         
         conn.close()
@@ -599,7 +666,15 @@ class HealthDataManager:
         return message_id
     
     def get_chat_messages(self, chat_id: str) -> List[Dict[str, Any]]:
-        """Get all messages for a chat conversation"""
+        """Get all messages for a chat conversation with Redis cache"""
+        # 尝试从缓存获取
+        if self.cache and self.cache.connected:
+            cached = self.cache.get_chat_messages(chat_id)
+            if cached is not None:
+                logger.debug(f"Cache hit for chat {chat_id} messages")
+                return cached
+        
+        # 从数据库获取
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         
@@ -619,4 +694,10 @@ class HealthDataManager:
             })
         
         conn.close()
+        
+        # 写入缓存
+        if self.cache and self.cache.connected:
+            self.cache.cache_chat_messages(chat_id, messages, ttl=3600)
+            logger.debug(f"Cached messages for chat {chat_id}")
+        
         return messages
